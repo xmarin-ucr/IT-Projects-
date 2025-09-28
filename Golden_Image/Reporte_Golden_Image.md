@@ -1,5 +1,5 @@
 # Reporte del Laboratorio - Intro a Linux CLI
-## Ximena Marín Sánchez C14448
+## Ximena Marín Sánchez
 
 ## Introducción
 
