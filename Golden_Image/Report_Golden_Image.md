@@ -72,6 +72,8 @@ The main reason for enabling SSH is that VirtualBox’s terminal does not allow 
 
 - Right-click the virtual machine and select Settings
 
+[Settings VM](/Golden_Image/img/Conf_BBox.png)
+
 - Go to the Network tab
 
 - Set Attached to: Bridged Adapter
@@ -79,6 +81,8 @@ The main reason for enabling SSH is that VirtualBox’s terminal does not allow 
 - Under Name, select your network controller (e.g., Intel-based)
 
 - Click Accept to apply changes
+
+[Bridged Adapter](/Golden_Image/img/Red_VBOX.png)
 
 ## How to find your IP Address in Rocky Linux
 Once logged into the VM run the following command:
