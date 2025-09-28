@@ -1,45 +1,48 @@
-# Reporte del Laboratorio - Intro a Linux CLI
-## Ximena Marín Sánchez C14448
+## Author: Ximena Marín Sánchez
 
-## Introducción
+## Table of Contents
+- [Introduction](#introduction)
+- [Installing VirtualBox and Rocky Linux 9](#installing-virtualbox-and-rocky-linux-9)
+- [Custom Partitioning](#custom-partitioning)
+- [Connecting via SSH](#connecting-via-ssh)
+- [Installing OpenSCAP](#installing-openscap)
+- [Running Compliance Tests](#running-openscap-compliance-tests)
+- [Installing Firewalld](#installing-firewalld)
+- [Fail2Ban Setup](#fail2ban-setup)
+- [DNF Automatic Setup](#dnf-automatic-setup)
+- [SSH Configuration](#ssh-configuration)
+- [Conclusion](#conclusion)
 
-El presente reporte tiene como finalidad la creación de una imagen base o "golden image" siendo el nombre asignado a una máquina virtual cuyo objetivo es posteriomente crear más máquinas virtuales y su enfoque es mostrar los comandos específicos empleados para la Golden Image. 
+## Introduction
+This report aims to document the creation of a base image, commonly referred to as a "golden image" -a virtual machine configured to serve as a template for deploying additional VMs. The focus is on detailing the specific commands and configurations used to build and secure the golden image.
 
-Para el desarrollo de la máquina virtual se utiliza Virtual Box 7.2.0, con el sistema operativo Rocky Linux 9, la versión Rocky Linux 9.6 minimal iso, con la finalidad que no tenga interfaz gráfica e impulsar el aprendizaje de usar la línea de interfaz de comandos.  
+The virtual machine was developed using VirtualBox version 7.2.0 and the Rocky Linux 9 operating system, specifically the Rocky Linux 9.6 Minimal ISO. This version was chosen to exclude a graphical interface and promote learning through command-line interaction.
 
-Las herramientas y guías mostradas a continuación son las que se utilizaron para el desarrollo del reporte:
+**For strategic overview of this project and its relevance to cybersecurity roles, see [Project Overview](/Golden_Image/Project_Overview.md)**
 
-- CIS Rocky Linux 9 Benchmark
+## Installing VirtualBox and Rocky Linux 9
 
-- [Automated security hardening with OpenSCAP](https://tech-couch.com/post/automated-security-hardening-on-rockylinux-with-openscap)
+1. Visit [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
 
-- [Firewalld](https://docs.rockylinux.org/guides/security/firewalld-beginners/)
+2. Download the version appropriate for your host system (e.g., Windows)
 
-- [Fail2ban](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-rocky-linux-9)
+3. Follow the installation steps for VirtualBox
 
-- [DNF Automatic](https://docs.rockylinux.org/guides/security/dnf_automatic/)
+4. Visit [Rocky Linux Downloads](https://rockylinux.org/pt-PT/download)
 
-## Instalación  de VirtualBox y Rocky Linux 9 
-1. Ingresar a [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
+5. Download version 9.6 labeled Minimal ISO
 
-2. Descargar la opción según sea su máquina host, por ejemplo Windows. 
+6. Need help with the setup? Follow the step-by-step instructions in the [Installation Guide](/Golden_Image/Guides/Installation_Guide.md)
 
-3. Seguir los pasos de la instalación de VirtualBox.
+### Virtual Machine Resource Allocation
+The choice of 20 GB disk space, 4096 MB RAM, and 4 CPUs was made to avoid storage limitations and simulate a standard workstation. These values may vary depending on the available resources of the host machine.
 
-4. Ingresar a la página de [Rocky Linux Downloads](https://rockylinux.org/pt-PT/download)
+### Custom Partitioning
+During setup, you can choose between Standard Partition or LVM. In this case, LVM was selected for its scalability advantages.
 
-5. Descargar la versión 9.6 llamada Minimal ISO
+The partitioning layout used:
 
-### Tamaños utilizados para la máquina Virtual
-La elección de 20 GB de disco duro, 4096 MB de memoria y 4 CPUs, fue con la finalidad de no tener problemas de almacenamiento, y simular una computadora. Cabe destacar que también las medidas utilizadas dependen de los recursos de la computadora host. 
-
-## Particionamiento personalizado
-
-En los puntos de montaje puede seleccionar Partición Estándar o LVM, en mi caso escogí LVM porque permite mayor escalabilidad. 
-
-La distribución del particionamiento que utilice es:
- 
-| Partición      | Tamaño       | Tipo  | LVM
+| Partition      | Size       | File System  | LVM
 | ----------  | :-------------: | ----: | ----:
 | /home   | 1 GiB   | ext4 | Sí
 | /var/log   | 2 GiB   | ext4 | Sí
@@ -52,97 +55,115 @@ La distribución del particionamiento que utilice es:
 | /boot/efi |  600 MiB | EFI | No
 | swap |  7 GiB | SWAP | No
 
-### ¿Por qué personalizar el particionamiento?
-Dado que se tiene un mayor control sobre la máquina virtual de designar los tamaños asignados a cada una y previene  desbordamientos de disco. 
+### Why Customize Partitioning?
+Custom partitioning gives you greater control over resource allocation and helps prevent disk overflows. Partition sizes should be based on the total disk space assigned to the virtual machine.
 
-Asimismo, los tamaños de las particiones se deben basar en el tamaño del disco definido para la máquina virtual.
+Tip: To avoid OpenSCAP compliance errors, make sure to include /var/log/audit and all other recommended partitions. Missing them may lead to issues during security evaluations.
 
-*Consejo:* Para evitar un error que detecta OpenSCAP **no olviden /var/log/audit** y en general ninguna de las particiones para evitar futuros problemas con OpenSCAP. 
+## Using the Rocky Linux 9.6 Minimal ISO
+Since this version does not include a graphical interface, only the command line will be visible. At the main menu, simply press ENTER to proceed.
 
-## Usar la Minimal ISO Rocky Linux 9.6
-Al ser sin interfaz gráfica, solo se observará la línea de comandos, en el menú principal pueden darle ENTER.
+Login credentials will be requested based on the users created during installation—typically root and admin.
 
-Se solicita el login basado en las contraseñas definidas en la Instalación previa, para root y admin.
+## Connecting via SSH
+The main reason for enabling SSH is that VirtualBox’s terminal does not allow copy-paste from the host machine, which slows down workflow and increases the chance of typing errors. SSH provides a more efficient alternative, as explained below:
 
-## Conectar SSH
-El objetivo principal por el cual lo implementé es que al ser la máquina virtual no se permitia copiar y pegar desde la máquina hosts los comandos, dificultando la velocidad y aumentando el margen de error al digitar carácter por carácter, es por ello que hay una manera más sencilla, que explico a continuación:
+- Open Oracle VirtualBox and go to the main menu
 
-- Estar en el menú principal de Oracle VirtualBox 
+- Right-click the virtual machine and select Settings
 
-- Hacer click derecho a la máquina virtual y presionar Configuración
+- Go to the Network tab
 
-- Seleccionar la opción de red
+- Set Attached to: Bridged Adapter
 
-- Conectar a: Adaptador puente, y en nombre selecciona su controlador de red, en mi caso empezaba por Intel
+- Under Name, select your network controller (e.g., Intel-based)
 
-- Presionar la opción de Aceptar
+- Click Accept to apply changes
 
-### ¿Cómo saber mi IP en Rocky Linux?
-Una vez ingresado en el sistema operativo use el comando
+## How to find your IP Address in Rocky Linux
+Once logged into the VM run the following command:
 ``` 
 ip a
 ```
-El comando lo que hace es mostrar las direcciones IP, y se ejecuta para poder crear una conexión FULL DUPLEX entre la máquina host y la máquina virtual. 
 
-Seleccione la dirección IP, por ejemplo, puede empezar con 192.
+This command displays the IP addresses assigned to the system. You’ll need this to establish a full-duplex connection between your host machine and the virtual machine.
 
-### Abrir una terminal en la computadora Host
-Ahora que conoce la dirección IP de la máquina virtual, abra una terminal en su computadora por ejemplo de WSL o de su preferencia 
+Look for an IP address that typically starts with 192.
 
-Y digite el siguiente comando:
+## Open a Terminal on the Host Machine
+Now that you have the VM’s IP address, open a terminal on your host system (e.g., WSL, macOS Terminal, or your preferred shell) and run:
 
 ```   
-ssh admin@[direccion IP obtenida del ip a]
+ssh admin@[IP address from ip a]
 ```
-Lo que hace es establecer mediante el ssh, en este caso con el admin crear una conexión FULL DUPLEX, y se ejecuta para ser la terminal en la que se copien los comandos y así evitar tener que digitar caracter por caracter los comandos en la terminal de Rocky Linux dentro de la máquina virtual. 
+This command initiates an SSH connection using the admin user, allowing you to interact with the VM from your host terminal. It enables full-duplex communication and lets you copy-paste commands directly, saving time and reducing errors.
 
-## Instalar OpenSCAP
+### Installing Nano Editor
+Nano is a lightweight text editor commonly used in Unix/Linux systems:
+
+```
+sudo dnf install nano
+```
+
+## Installing OpenSCAP
 ```
 sudo dnf install scap-security-guide openscap-scanner
 ```
+This command installs openscap-scanner, a tool for security auditing, and scap-security-guide, which provides predefined profiles aligned with common security standards.
 
-El comando lo que hace es descagar openscap-scanner y el de scap-security-guide proporciona múltiples perfiles predeterminados para estándares comunes de seguridad. 
+These tools are used to strengthen the operating system’s security posture by evaluating and enforcing compliance with industry benchmarks.
 
-Se ejecuta para mejorar el hardening del sistema operativo dado que es un software para auditar el cumplimiento de políticas de seguridad estándar.
+## Important Note: Consider Shutting Down the VM After Installation
+After installing OpenSCAP, a security policy is applied that may invalidate existing passwords.
+This can lead to technical issues such as:
 
-## Observación: Intenta apagar la máquina virtual en este punto 
+```
+Password expired, contact your system administrator
+```
 
-OpenSCAP tras la instalación implementa una política de seguridad y se caducan las contraseñas previas.
+To avoid complications, it is recommended to shut down the virtual machine immediately after installation. This preserves the current system state and allows you to restart the process if needed.
 
-La recomendación es porque entre más pronto apagues posterior a la descarga de OpenSCAP, mejor, dado que en caso de tener problemas técnicos como el mensaje: Password expired, contact your system administrator, es más rápido iniciar de cero y en la nueva máquina virtual llegar a este punto.
+Alternatively, consider using VirtualBox snapshots to save your progress at key stages. Snapshots provide a reliable way to roll back to a working configuration without repeating the entire setup. 
 
 ```
 sudo poweroff
 ```
 
-### Configuración de expiración de contraseñas
-
-Si intentaste apagar la máquina virtual te debio salir el mensaje:
-
-"You are required to change your password inmediately (password expired)
-
-Lo que debes hacer es
-- Escribir tu contraseña actual
-- **Escoger una contraseña con 14 caracteres, teniendo Mayúsculas, minúsculas, números, y caracteres especiales**
-- Una manera de escoger las contraseñas es la unión de palabras, para saber que cumple con el minimo de caracteres
-- Recomendación: Dado que en la terminal no puedes ver lo que digitas, puedes ir más despacio para tener mayor certeza que presionaste las letras que deseabas.  
-
-### Definir una fecha de expiración
-Tras el restauro de tus contraseñas, para evitar de que se vuelva a expirar más pronto de lo que esperas, puedes utilizar el siguiente comando:
+### Password Expiration Configuration
+If you attempted to shut down the virtual machine after installing OpenSCAP, you may have encountered the following message:
 
 ```
-sudo chage -M [cantidad maxima de dias antes de que se caduzca la contraseña] [usuario]
+You are required to change your password inmediately (password expired)
 ```
 
+To proceed:
+
+- Enter your current password
+
+- **Choose a new password with at least 14 characters, including uppercase letters, lowercase letters, numbers, and special characters**
+
+- A helpful strategy is to combine multiple words to meet the character requirement
+
+- Recommendation: Since the terminal does not display your input, type slowly to ensure accuracy
+
+### Set a Custom Password Expiration Date
+
+After resetting your password, you can prevent it from expiring prematurely by setting a longer expiration period:
+
+```
+sudo chage -M [maximum number of days before expiration] [username]
+```
+
+Example: 
 ```
 sudo chage -M 6000 admin
 
 sudo chage -M 6000 root
 ```
+This sets the password to expire in approximately the year 2042.
 
-El comando lo que hace es definir una cantidad de días máximo a que se caduque la contraseña, en el caso de 6000 sería en el 2042, y se ejecuta para definir una fecha en la que se debe caducar una contraseña.
-
-### Verificar la nueva fecha de caducidad
+### Verify Password Expiration Settings
+To confirm the new expiration date:
 
 ```
 chage -l admin
@@ -152,12 +173,9 @@ chage -l admin
 sudo chage -l root
 ```
 
-Lo que hace es visualizar la información de las contraseñas asociadas a cada usuario, y se ejecuta para revisar de que se haya actualizada la fecha de caducidad con respecto a los días seleccionados en el caso anterior. 
+These commands display password-related information for each user, allowing you to verify that the expiration date has been updated successfully.
 
-En este caso tanto para root como para admin se cambia y verifica la nueva caducidad de la contraseña. 
-
-## Para hacer pruebas con OpenSCAP
-
+## Running OpenSCAP Compliance Tests
 ```
 sudo oscap xccdf eval \
   --remediate \
@@ -166,347 +184,87 @@ sudo oscap xccdf eval \
   /usr/share/xml/scap/ssg/content/ssg-rl9-ds.xml
 ```
 
-El comando lo que hace es mostrar una salida con lo que evalua y si pasó o no la prueba del cumplimiento de políticas de seguridad, además de que tiene la capacidad de solucionar automáticamente los problemas detectados durante la evaluación.
+This command runs a security compliance evaluation based on the CIS profile. It generates a report indicating which rules passed or failed, and it also has the ability to automatically remediate detected issues.
 
-Se ejecuta para saber en que se puede mejorar y los aspectos pendientes de implementar para cumplir con las políticas de seguridad estándar.
+It is used to identify areas for improvement and ensure the system aligns with standard security policies.
 
-*Consejo* Lo puede ejecutar en la terminal de su máquina host para mayor facilidad, y correrlo más de una vez para que haya un aumento en los que tienen el "Result fixed" 
+*Tip:* You can run this command from your host machine’s terminal for convenience. Running it multiple times may increase the number of rules marked as “Result fixed.”
 
-## Visualización y solución de los problemas detectados por OpenSCAP
+## Reviewing and Resolving OpenSCAP Failures
 
-### Resultado fallido 1: 
-```
---- Starting Remediation ---
-Title   Ensure all users last password change date is in the past 
-Rule    xccdf_org.ssgproject.content_rule_accounts_password_last_change_is_in_past
-Result  fail
-```
-### Solución 1:
-Lo que nos comunica el mensaje es que los cambios de contraseñas tenían fecha en el futuro.
+See detailed failure and fixes in the [OpenSCAP Remediation Guide](/Golden_Image/Guides/OpenSCAP_Remediation.md)
 
-Es por ello que se ejecuta el siguiente comando para visualizar la fecha asociada de cambio de contraseña
-
-```
-chage -l admin
-```
-```
-sudo chage -l root
-```
-
-El siguiente comando es para ajustar la fecha con una fecha pasada con la finalidad que la siguiente vez que se ejecute OpenSCAP el resultado sea aprobado. 
-
-```
-sudo chage --lastday 2025-08-29 root
-sudo chage --lastday 2025-08-29 admin
-```
-
-### Resultado fallido 2: 
-```
-Title   Set Boot Loader Password in grub2 
-Rule xccdf_org.ssgproject.content_rule_grub2_password
-Result fail  
-```
-
-### Solución 2:
-```
-sudo grub2-setpassword
-```
-
-Este comando es para crear una contraseña encriptada y asegurarse de que la contraseña del cargador de arranque esté configurada. 
-
-Y se ejecuta para que en la siguiente ejecución de OpenSPAC el resultado sea aprobado.
-
-### Resultado fallido 3: 
-```
-Title   Limit Users' SSH Access 
-Rule    xccdf_org.ssgproject.content_rule_sshd_limit_user_access
-Result fail
-```
-
-### Solución 3:
-```   
-sudo nano /etc/ssh/sshd_config
-```
-
-Escriba la siguiente línea en el editor de texto para que limite el acceso a SSH exclusivamente al usuario llamado admin.  
-
-```
-AllowUsers admin
-```
-
-##  Instalar Firewalld
-
-Es el comando para habilitar el firewalld.
-
-Se ejecuta porque proporciona un firewall gestionado dinámicamente y es el firewall por defecto de Rocky Linux.
-
+## Installing Firewalld
+To enable Firewalld, the default firewall manager in Rocky Linux:
 ```
 sudo systemctl enable --now firewalld
 ```
-
-El comando es para visualizar cuál es la zona que tiene el firewall por defecto
-
-Se ejecuta para verificar cuál es la zona predeterminada y el resultado que puede aparecer es Public.
-
+### Firewall Zones
+To view the default zone and the expected output may be public:
 ```
 sudo firewall-cmd --get-default-zone
 ```
-
-Se ejecuta para verificar que zonas se encuentran activas. 
+To list active zones:
 ```
 sudo firewall-cmd --get-active-zones
 ```
 
-Se ejecuta el comando para verificar los servicios que tiene asociados la zona predeterminado, lo que nos permite evaluar si se ocupan habilitar otros servicios y puertos para la misma.
+To inspect services and ports associated with the default zone:
 
 ```
 sudo firewall-cmd --list-all
 ```
 
-El comando es para establecer una zona de trabajo.
-
-Se ejecuta el comando porque para efectos del reporte solo se va a confiar en las máquinas de trabajo dentro de la misma zona de trabajo. 
+### Set a Custom Zone
+To set the default zone to work, which will be used to trust internal machines:
 ```
 sudo firewall-cmd --set-default-zone work
 ```
 
-El comando es para habilitar en este caso ssh en la zona de trabajo.
-
-Se ejecuta para garantizar que se pueda conectar por ssh
-
+To allow SSH access in the work zone:
 ```
 sudo firewall-cmd --zone=work --add-service=ssh
 ```
 
-El comando es para habilitar un puerto.
-
-Se ejecuta para habilitar un puerto de trabajo teniendo las computadoras una comunicación por el puerto 5000 TCP.
-
+To open TCP port 5000 for communication:
 ```
 sudo firewall-cmd --zone=work --add-port=5000/tcp
 ```
 
-Es para guardar los cambios de forma permanente. 
+To make all changes permanent:
 
 ```
 sudo firewall-cmd --runtime-to-permanent
 ```
 
-## Requisito previo a usar Fail2Ban
-- Estar utilizando un sistema Rocky Linux 9
-- Tener el firewalld corriendo, que se puede revisar con el siguiente comando:
+## Prerequisites for Using Fail2Ban
+- Using a Rocky Linux 9 system. 
+- Firewalld must be running, can check with the following command: 
 ```
 systemctl status firewalld
 ```
 
-## Instalación Fail2Ban
+## Fail2Ban Setup
+For detailed configuration steps, refer to the guide: [Fail2Ban_Setup](/Golden_Image/Guides/Fail2Ban_Setup.md) 
 
-El comando lo que hace es utilizar el repositorio EPEL, que se utiliza para paquetes de terceros de Red Hat y Rocky Linux, dado que Fail2ban no está disponible en el repositorio de software predeterminado de Rocky.
+## DNF Automatic Setup
+For detailed configuration steps, refer to the guide: [DNF_Automatic](/Golden_Image/Guides/DNF_Automatic.md)
 
-```
-sudo dnf install epel-release -y
-```
+## SSH configuration 
+For detailed configuration steps, refer to the guide: [SSH_Configuration](/Golden_Image/Guides/SSH_Hardening.md)
 
-Se ejecuta el comando para instalar el sistema de prevención de intrusiones Fail2Ban cuyo objetivo en el reporte es habilitar el SSH. 
 
-```
-sudo dnf install fail2ban -y
-```
+## Conclusion
+This virtual machine was built to meet CIS Level 1 Server benchmarks. Key achievements include:
 
-### Instalación de nano en Rocky Linux
+- Custom partitioning and resource allocation
 
-Lo que hace es instalar un editor de texto denominado nano, que se suele usar para sistemas operativos Unix y Linux.
+- SSH hardening and user access controls
 
-Se ejecuta para que en el siguiente paso no les de un error.
+- Intrusion prevention with Fail2Ban
 
-```
-sudo dnf install nano
-```
+- Automated patching via DNF-Automatic
 
-### Creacion de archivo para habilitar el SSH en Fail2Ban
+- Firewall configuration with Firewalld
 
-Crea un archivo llamado jail.local en la carpeta /etc/fail2ban
-
-Se ejecuta para mejorar las políticas de seguridad, y evitar posibles ataques de fuerza de bruta al tener una cantidad considerable de intentos en un tiempo determinado.
-
-```
-sudo nano /etc/fail2ban/jail.local
-```
-
-A continuación escriba en el editor de texto lo que desea implementar.
-
-* El parámetro enabled = true es para habilitar el ssh
-
-* El parámetro logpath le indica donde estan localizados los logs. 
-
-```
-[DEFAULT]
-# Ban hosts for fifteen minutes:
-bantime = 900
-
-# Maxium of tries in ten minutes
-findtime = 10m
-maxretry = 3
-
-[sshd]
-enabled = true
-port = ssh
-logpath = %(sshd_log)s
-backend = %(sshd_backend)s
-```
-
-## Verificación de que está corriendo Fail2ban
-
-Este comando se ejecuta para revisar de que se haya configurado de la manera esperada, por ejemplo, en la impresión que se muestra, Tasks: tiene el número definido por maxretry.
-
-Se ejecuta con la finalidad de revisar de que la salida sea según lo esperado y esté actualizada.
-
-```
-sudo systemctl status fail2ban
-```
-
-### Ejecución automática
-
-El comando es para habilitar para que Fail2Ban se ejecute automáticamente
-
-Se ejecuta el comando con la finalidad de que se inicie automáticamente tras el arranque del sistema. 
-
-```
-sudo systemctl enable fail2ban
-```
-
-## Instalación del paquete dnf-automatic
-
-Descarga la herramienta que se utiliza para proporcionar actualizaciones de software. 
-
-Se ejecuta para tener automatizadas las descargas y actualizaciones en el servidor de Rocky.
-
-```
-sudo dnf install dnf-automatic
-```
-
-### Configuración para hacer actualizaciones de seguridad
-
-El comando es para editar el temporizador de dnf-automatic
-
-Se ejecuta para personalizar el dnf-automatic.
-
-```
-sudo systemctl edit dnf-automatic.timer
-```
-
-#### Script del dnf-automatic
-
-Se debe descomentar las siguientes líneas.
-
-Se ejecuta para tener una configuración definida para actualizar en este caso con un retraso de inicio entre las 6 y 6:20 am 
-
-```
-[Unit]
-Description=dnf-automatic timer
-# See comment in dnf-makecache.service
-ConditionPathExists=!/run/ostree-booted
-Wants=network-online.target
-
-[Timer]
-OnCalendar=*-*-* 6:00
-RandomizedDelaySec=20m
-Persistent=true
-
-[Install]
-WantedBy=timers.target
-``` 
-
-### Activación de temporizador
-
-Se ejecuta para activar el temporizador asociado al servicio según lo estipulado en el paso anterior.
-
-``` 
-sudo systemctl enable --now dnf-automatic.timer
-``` 
-
-# Configuración SSH
-
-## Pasos para que permita llaves y contraseñas 
-
-El comando es para acceder al archivo sshd_config.
-
-Y se ejecuta dado que se van a realizar modificaciones, por ejemplo para permitir llaves y contraseñas
-
-``` 
-sudo nano /etc/ssh/sshd_config
-``` 
-
-* En la línea de que dice PasswordAuthentication, descomentarla y revisar que la opción asociada es yes.
-
-* Sirve para que el servidor SSH autentique a los usuarios mediante llaves (pública y privada) y contraseñas.
-
-``` 
-PasswordAuthentication yes
-``` 
-
-De igual manera descomente la linea de PubKeyAuthentication, lo que hace es permitir usar un par de claves SSH pública y privada, por ejemplo, si desea intentar ahorrar tiempo al acceder a los servidores Rocky Linux ya que facilitan el inicio de sesión en máquinas remotas y la ejecución de comandos.
-
-``` 
-PubKeyAuthentication yes
-``` 
-
-El comando es para que se cargue la configuración con los nuevos cambios.
-``` 
-sudo systemctl restart sshd
-``` 
-
-### Generación de llaves en SSH
-
-En la terminal Windows para crear una llave ejecute el siguiente comando:
-
-``` 
-ssh-keygen
-``` 
-
-Al no pertenecer a la preparación del Golden Image ni del Hardening el reporte no tendrá el paso a paso.
-
-Para tener mayor información puede revisar el sitio [Configuracion claves SSH en Rocky Linux](https://www-digitalocean-com.translate.goog/community/tutorials/how-to-set-up-ssh-keys-on-rocky-linux-9?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc&_x_tr_hist=true)
-
-
-## Inhabilitar que el root se conecte por ssh
-
-El comando es para acceder al archivo sshd_config.
-
-Se ejecuta para definir que el usuario root no se pueda logear usando SSH.
-
-``` 
-sudo nano /etc/ssh/sshd_config
-``` 
-
-En la línea PermitRootLogin descomentela y escriba no, debido a que de esta manera los administradores deben autenticarse con su propia cuenta individual y luego escalar a root.
-
-``` 
-PermitRootLogin no
-``` 
-
-## Pasos para no permitir contraseñas en blanco
-
-El comando es para acceder al archivo sshd_config.
-
-Se ejecuta para acceder a la configuración y modificar el archivo al impedir contraseñas en blanco.
-
-``` 
-sudo nano /etc/ssh/sshd_config
-``` 
-
-En la línea PermitEmptyPasswords descomentela, y se realiza para reducir las probabilidades de acceso no autorizado al sistema, debido a que brinda mayor seguridad. 
-
-``` 
-PermitEmptyPasswords no
-``` 
-
-# Conclusiones
-
-La elaboración de la máquina virtual brinda nuevos desafíos y un tiempo asociado a resolver problemas, no obstante para el final de la misma cumplirá con el Nivel 1 de CIS Server.
-
-Habrá aprendido sobre el particionamiento, cumplir con políticas de seguridad, tendrá hardening implementado, y el conocimiento de como instalar y utilizar las diversas herramientas mostradas en esta guía como Firewalld, Fail2Ban, OpenSCAP y DNF-Automatic. 
-
-Asimismo, sabrá sobre como modificar el archivo de configuración de SSH basado en sus necesidades y la seguridad, por ejemplo, al no permitir contraseñas vacías y habilitar los usuarios que tienen acceso al SSH.
-
-Y por último, cabe destacar que su servidor al implementar estas herramientas tendrá un firewall, actualizaciones configuradas autómaticamente entre un rango de las 6 am a 6:20 am, y al estar actualizada implementa los parches de seguridad evitando ataques en una vulnerabilidad implementada en una actualización.
+By the end of the setup, the server is equipped with a dynamic firewall, scheduled security updates between 6:00–6:20 AM, and hardened access policies to prevent unauthorized logins and brute-force attacks.
