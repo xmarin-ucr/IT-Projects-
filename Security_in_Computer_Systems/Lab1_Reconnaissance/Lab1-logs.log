@@ -1,0 +1,1069 @@
+Script started on 2025-09-05 18:36:35-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="69" LINES="28"]
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnmap -sn 172.16.10.0/24[27m[C[C[C[Cnmap -sn 172.16.10.0/24
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 18:37 EDT
+Nmap scan report for 172.16.10.10
+Host is up (0.000017s latency).
+MAC Address: 86:E2:05:AA:B1:6B (Unknown)
+Nmap scan report for 172.16.10.11
+Host is up (0.00015s latency).
+MAC Address: 86:4D:48:74:4C:7E (Unknown)
+Nmap scan report for 172.16.10.12
+Host is up (0.000049s latency).
+MAC Address: C6:0F:AA:37:3C:25 (Unknown)
+Nmap scan report for 172.16.10.13
+Host is up (0.000036s latency).
+MAC Address: F6:FA:C3:96:90:49 (Unknown)
+Nmap scan report for 172.16.10.1
+Host is up.
+Nmap done: 256 IP addresses (5 hosts up) scanned in 15.21 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnmap -sn 172.16.10.0/24 --exclude 172.16.10.1 --reason[27m[C[C[C[Cnmap -sn 172.16.10.0/24 --exclude 172.16.10.1 --reason
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 18:37 EDT
+Nmap scan report for 172.16.10.10
+Host is up, received arp-response (0.0000090s latency).
+MAC Address: 86:E2:05:AA:B1:6B (Unknown)
+Nmap scan report for 172.16.10.11
+Host is up, received arp-response (0.000016s latency).
+MAC Address: 86:4D:48:74:4C:7E (Unknown)
+Nmap scan report for 172.16.10.12
+Host is up, received arp-response (0.000029s latency).
+MAC Address: C6:0F:AA:37:3C:25 (Unknown)
+Nmap scan report for 172.16.10.13
+Host is up, received arp-response (0.000036s latency).
+MAC Address: F6:FA:C3:96:90:49 (Unknown)
+Nmap done: 255 IP addresses (4 hosts up) scanned in 8.87 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnc -zv 172.16.10.11 1-1024[27m[C[C[C[Cnc -zv 172.16.10.11 1-1024
+[?2004l172.16.10.11: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.11] 80 (http) open
+(UNKNOWN) [172.16.10.11] 21 (ftp) open
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m nc -zv 172.16.10.11 1-1024[1P 1-1024[C[C[C[C[Knc -zv 172.16.10.1 1-10242 1-1024
+[?2004l172.16.10.12: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.12] 80 (http) open
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m nc -zv 172.16.10.12 1-1024[1P 1-10243 1-1024
+[?2004l172.16.10.13: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.13] 22 (ssh) open
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnmap -sV -F 172.16.10.11[27m[C[C[C[Cnmap -sV -F 172.16.10.11
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 18:58 EDT
+Nmap scan report for 172.16.10.11
+Host is up (0.0000060s latency).
+Not shown: 98 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.5
+80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
+MAC Address: 86:4D:48:74:4C:7E (Unknown)
+Service Info: OS: Unix
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 14.12 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m nmap -sV -F 172.16.10.11[K2
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 18:58 EDT
+Nmap scan report for 172.16.10.12
+Host is up (0.0000060s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.57 ((Debian))
+MAC Address: C6:0F:AA:37:3C:25 (Unknown)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 12.97 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnmap -sV -F 172.16.10.0/24 --exclude 172.16.10.1[27m[C[C[C[Cnmap -sV -F 172.16.10.0/24 --exclude 172.16.10.1
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 19:01 EDT
+Nmap scan report for 172.16.10.10
+Host is up (0.0000060s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+8081/tcp open  http    Werkzeug httpd 3.0.1 (Python 3.12.3)
+MAC Address: 86:E2:05:AA:B1:6B (Unknown)
+
+Nmap scan report for 172.16.10.11
+Host is up (0.0000070s latency).
+Not shown: 98 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.5
+80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
+MAC Address: 86:4D:48:74:4C:7E (Unknown)
+Service Info: OS: Unix
+
+Nmap scan report for 172.16.10.12
+Host is up (0.000013s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.57 ((Debian))
+MAC Address: C6:0F:AA:37:3C:25 (Unknown)
+
+Nmap scan report for 172.16.10.13
+Host is up (0.0000060s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.13 (Ubuntu Linux; protocol 2.0)
+MAC Address: F6:FA:C3:96:90:49 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 255 IP addresses (4 hosts up) scanned in 19.24 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnc -v 172.16.10.11 21[27m[C[C[C[Cnc -v 172.16.10.11 21
+[?2004l172.16.10.11: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.11] 21 (ftp) open
+220 (vsFTPd 3.0.5)
+
+^C
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m nc -v 172.16.10.11 21[C[C[C[K[K80
+[?2004l172.16.10.11: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.11] 80 (http) open
+
+HTTP/1.1 400 Bad Request
+Date: Fri, 05 Sep 2025 23:22:48 GMT
+Server: Apache/2.4.58 (Ubuntu)
+Content-Length: 326
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.58 (Ubuntu) Server at p-ftp-01.acme-infinity-servers.com Port 80</address>
+</body></html>
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m nc -v 172.16.10.11 80[K[K[C[C[C[C[Knc -v 172.16.10.11 22[1P 223 22
+[?2004l172.16.10.13: inverse host lookup failed: Unknown host
+(UNKNOWN) [172.16.10.13] 22 (ssh) open
+SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.13
+
+Invalid SSH identification string.
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mcurl --head http://172.16.10.10:8081[27m[C[C[C[Ccurl --head http://172.16.10.10:8081
+[?2004lHTTP/1.1 200 OK
+[1mServer[0m: Werkzeug/3.0.1 Python/3.12.3
+[1mDate[0m: Fri, 05 Sep 2025 23:25:30 GMT
+[1mContent-Type[0m: text/html; charset=utf-8
+[1mContent-Length[0m: 7176
+[1mConnection[0m: close
+
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m curl --head http://172.16.10.10:8081[1P:80812:8081
+[?2004lcurl: (7) Failed to connect to 172.16.10.12 port 8081 after 0 ms: Could not connect to server
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m curl --head http://172.16.10.12:8081[K0
+[?2004lcurl: (7) Failed to connect to 172.16.10.12 port 8080 after 0 ms: Could not connect to server
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m curl --head http://172.16.10.12:8080[1P:80801:8080[C[C[C[C[C[K1
+[?2004lcurl: (7) Failed to connect to 172.16.10.11 port 8081 after 0 ms: Could not connect to server
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m curl --head http://172.16.10.11:8081[K[K
+[?2004lHTTP/1.1 200 OK
+[1mDate[0m: Fri, 05 Sep 2025 23:27:49 GMT
+[1mServer[0m: Apache/2.4.58 (Ubuntu)
+[1mLast-Modified[0m: Mon, 11 Aug 2025 03:56:00 GMT
+[1mETag[0m: "29af-63c0ee6d4bd61"
+[1mAccept-Ranges[0m: bytes
+[1mContent-Length[0m: 10671
+[1mVary[0m: Accept-Encoding
+[1mContent-Type[0m: text/html
+
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mls -l /usr/share/nmap/scripts[27m[C[C[C[Cls -l /usr/share/nmap/scripts
+[?2004ltotal 5004
+-rw-r--r-- 1 root root  3901 May 15 11:37 acarsd-info.nse
+-rw-r--r-- 1 root root  8749 May 15 11:37 address-info.nse
+-rw-r--r-- 1 root root  3345 May 15 11:37 afp-brute.nse
+-rw-r--r-- 1 root root  6463 May 15 11:37 afp-ls.nse
+-rw-r--r-- 1 root root  7001 May 15 11:37 afp-path-vuln.nse
+-rw-r--r-- 1 root root  5600 May 15 11:37 afp-serverinfo.nse
+-rw-r--r-- 1 root root  2621 May 15 11:37 afp-showmount.nse
+-rw-r--r-- 1 root root  2262 May 15 11:37 ajp-auth.nse
+-rw-r--r-- 1 root root  2983 May 15 11:37 ajp-brute.nse
+-rw-r--r-- 1 root root  1329 May 15 11:37 ajp-headers.nse
+-rw-r--r-- 1 root root  2590 May 15 11:37 ajp-methods.nse
+-rw-r--r-- 1 root root  3051 May 15 11:37 ajp-request.nse
+-rw-r--r-- 1 root root  6719 May 15 11:37 allseeingeye-info.nse
+-rw-r--r-- 1 root root  1678 May 15 11:37 amqp-info.nse
+-rw-r--r-- 1 root root 15024 May 15 11:37 asn-query.nse
+-rw-r--r-- 1 root root  2054 May 15 11:37 auth-owners.nse
+-rw-r--r-- 1 root root   870 May 15 11:37 auth-spoof.nse
+-rw-r--r-- 1 root root  9050 May 15 11:37 backorifice-brute.nse
+-rw-r--r-- 1 root root 10193 May 15 11:37 backorifice-info.nse
+-rw-r--r-- 1 root root 53137 May 15 11:37 bacnet-info.nse
+-rw-r--r-- 1 root root  6136 May 15 11:37 banner.nse
+-rw-r--r-- 1 root root  2012 May 15 11:37 bitcoin-getaddr.nse
+-rw-r--r-- 1 root root  1812 May 15 11:37 bitcoin-info.nse
+-rw-r--r-- 1 root root  4437 May 15 11:37 bitcoinrpc-info.nse
+-rw-r--r-- 1 root root  4079 May 15 11:37 bittorrent-discovery.nse
+-rw-r--r-- 1 root root  1344 May 15 11:37 bjnp-discover.nse
+-rw-r--r-- 1 root root  4428 May 15 11:37 broadcast-ataoe-discover.nse
+-rw-r--r-- 1 root root  2964 May 15 11:37 broadcast-avahi-dos.nse
+-rw-r--r-- 1 root root  4786 May 15 11:37 broadcast-bjnp-discover.nse
+-rw-r--r-- 1 root root  2438 May 15 11:37 broadcast-db2-discover.nse
+-rw-r--r-- 1 root root  3217 May 15 11:37 broadcast-dhcp6-discover.nse
+-rw-r--r-- 1 root root 10151 May 15 11:37 broadcast-dhcp-discover.nse
+-rw-r--r-- 1 root root  1499 May 15 11:37 broadcast-dns-service-discovery.nse
+-rw-r--r-- 1 root root  3866 May 15 11:37 broadcast-dropbox-listener.nse
+-rw-r--r-- 1 root root 12202 May 15 11:37 broadcast-eigrp-discovery.nse
+-rw-r--r-- 1 root root  3472 May 15 11:37 broadcast-hid-discoveryd.nse
+-rw-r--r-- 1 root root 14655 May 15 11:37 broadcast-igmp-discovery.nse
+-rw-r--r-- 1 root root  3184 May 15 11:37 broadcast-jenkins-discover.nse
+-rw-r--r-- 1 root root 10449 May 15 11:37 broadcast-listener.nse
+-rw-r--r-- 1 root root  3813 May 15 11:37 broadcast-ms-sql-discover.nse
+-rw-r--r-- 1 root root  1909 May 15 11:37 broadcast-netbios-master-browser.nse
+-rw-r--r-- 1 root root  2330 May 15 11:37 broadcast-networker-discover.nse
+-rw-r--r-- 1 root root  2005 May 15 11:37 broadcast-novell-locate.nse
+-rw-r--r-- 1 root root 16838 May 15 11:37 broadcast-ospf2-discover.nse
+-rw-r--r-- 1 root root  1966 May 15 11:37 broadcast-pc-anywhere.nse
+-rw-r--r-- 1 root root  3550 May 15 11:37 broadcast-pc-duo.nse
+-rw-r--r-- 1 root root  5995 May 15 11:37 broadcast-pim-discovery.nse
+-rw-r--r-- 1 root root  9289 May 15 11:37 broadcast-ping.nse
+-rw-r--r-- 1 root root  3229 May 15 11:37 broadcast-pppoe-discover.nse
+-rw-r--r-- 1 root root  4966 May 15 11:37 broadcast-rip-discover.nse
+-rw-r--r-- 1 root root  5889 May 15 11:37 broadcast-ripng-discover.nse
+-rw-r--r-- 1 root root  3616 May 15 11:37 broadcast-sonicwall-discover.nse
+-rw-r--r-- 1 root root  5316 May 15 11:37 broadcast-sybase-asa-discover.nse
+-rw-r--r-- 1 root root  1892 May 15 11:37 broadcast-tellstick-discover.nse
+-rw-r--r-- 1 root root  1539 May 15 11:37 broadcast-upnp-info.nse
+-rw-r--r-- 1 root root   924 May 15 11:37 broadcast-versant-locate.nse
+-rw-r--r-- 1 root root  2084 May 15 11:37 broadcast-wake-on-lan.nse
+-rw-r--r-- 1 root root  7447 May 15 11:37 broadcast-wpad-discover.nse
+-rw-r--r-- 1 root root  3117 May 15 11:37 broadcast-wsdd-discover.nse
+-rw-r--r-- 1 root root  1967 May 15 11:37 broadcast-xdmcp-discover.nse
+-rw-r--r-- 1 root root  3742 May 15 11:37 cassandra-brute.nse
+-rw-r--r-- 1 root root  2564 May 15 11:37 cassandra-info.nse
+-rw-r--r-- 1 root root  1506 May 15 11:37 cccam-version.nse
+-rw-r--r-- 1 root root 18114 May 15 11:37 cics-enum.nse
+-rw-r--r-- 1 root root 13755 May 15 11:37 cics-info.nse
+-rw-r--r-- 1 root root 11113 May 15 11:37 cics-user-brute.nse
+-rw-r--r-- 1 root root  9403 May 15 11:37 cics-user-enum.nse
+-rw-r--r-- 1 root root  4749 May 15 11:37 citrix-brute-xml.nse
+-rw-r--r-- 1 root root  4170 May 15 11:37 citrix-enum-apps.nse
+-rw-r--r-- 1 root root  4644 May 15 11:37 citrix-enum-apps-xml.nse
+-rw-r--r-- 1 root root  3880 May 15 11:37 citrix-enum-servers.nse
+-rw-r--r-- 1 root root  1126 May 15 11:37 citrix-enum-servers-xml.nse
+-rw-r--r-- 1 root root  7092 May 15 11:37 clamav-exec.nse
+-rw-r--r-- 1 root root  5019 May 15 11:37 clock-skew.nse
+-rw-r--r-- 1 root root  9405 May 15 11:37 coap-resources.nse
+-rw-r--r-- 1 root root  2594 May 15 11:37 couchdb-databases.nse
+-rw-r--r-- 1 root root  8986 May 15 11:37 couchdb-stats.nse
+-rw-r--r-- 1 root root  1082 May 15 11:37 creds-summary.nse
+-rw-r--r-- 1 root root  2137 May 15 11:37 cups-info.nse
+-rw-r--r-- 1 root root  1420 May 15 11:37 cups-queue-info.nse
+-rw-r--r-- 1 root root  2948 May 15 11:37 cvs-brute.nse
+-rw-r--r-- 1 root root  3879 May 15 11:37 cvs-brute-repository.nse
+-rw-r--r-- 1 root root  9203 May 15 11:37 daap-get-library.nse
+-rw-r--r-- 1 root root   578 May 15 11:37 daytime.nse
+-rw-r--r-- 1 root root 14351 May 15 11:37 db2-das-info.nse
+-rw-r--r-- 1 root root  4398 May 15 11:37 deluge-rpc-brute.nse
+-rw-r--r-- 1 root root  8462 May 15 11:37 dhcp-discover.nse
+-rw-r--r-- 1 root root  2275 May 15 11:37 dicom-brute.nse
+-rw-r--r-- 1 root root  2543 May 15 11:37 dicom-ping.nse
+-rw-r--r-- 1 root root  2499 May 15 11:37 dict-info.nse
+-rw-r--r-- 1 root root  3519 May 15 11:37 distcc-cve2004-2687.nse
+-rw-r--r-- 1 root root  5329 May 15 11:37 dns-blacklist.nse
+-rw-r--r-- 1 root root 10100 May 15 11:37 dns-brute.nse
+-rw-r--r-- 1 root root  6639 May 15 11:37 dns-cache-snoop.nse
+-rw-r--r-- 1 root root 15152 May 15 11:37 dns-check-zone.nse
+-rw-r--r-- 1 root root 14826 May 15 11:37 dns-client-subnet-scan.nse
+-rw-r--r-- 1 root root 10168 May 15 11:37 dns-fuzz.nse
+-rw-r--r-- 1 root root  3803 May 15 11:37 dns-ip6-arpa-scan.nse
+-rw-r--r-- 1 root root 12702 May 15 11:37 dns-nsec3-enum.nse
+-rw-r--r-- 1 root root 10580 May 15 11:37 dns-nsec-enum.nse
+-rw-r--r-- 1 root root  3441 May 15 11:37 dns-nsid.nse
+-rw-r--r-- 1 root root  4364 May 15 11:37 dns-random-srcport.nse
+-rw-r--r-- 1 root root  4363 May 15 11:37 dns-random-txid.nse
+-rw-r--r-- 1 root root  1456 May 15 11:37 dns-recursion.nse
+-rw-r--r-- 1 root root  2195 May 15 11:37 dns-service-discovery.nse
+-rw-r--r-- 1 root root  5679 May 15 11:37 dns-srv-enum.nse
+-rw-r--r-- 1 root root  5765 May 15 11:37 dns-update.nse
+-rw-r--r-- 1 root root  2123 May 15 11:37 dns-zeustracker.nse
+-rw-r--r-- 1 root root 26574 May 15 11:37 dns-zone-transfer.nse
+-rw-r--r-- 1 root root  1271 May 15 11:37 docker-version.nse
+-rw-r--r-- 1 root root  3865 May 15 11:37 domcon-brute.nse
+-rw-r--r-- 1 root root  4539 May 15 11:37 domcon-cmd.nse
+-rw-r--r-- 1 root root  4205 May 15 11:37 domino-enum-users.nse
+-rw-r--r-- 1 root root  2835 May 15 11:37 dpap-brute.nse
+-rw-r--r-- 1 root root  5805 May 15 11:37 drda-brute.nse
+-rw-r--r-- 1 root root  3796 May 15 11:37 drda-info.nse
+-rw-r--r-- 1 root root  7477 May 15 11:37 duplicates.nse
+-rw-r--r-- 1 root root  5855 May 15 11:37 eap-info.nse
+-rw-r--r-- 1 root root 57881 May 15 11:37 enip-info.nse
+-rw-r--r-- 1 root root  1716 May 15 11:37 epmd-info.nse
+-rw-r--r-- 1 root root  2564 May 15 11:37 eppc-enum-processes.nse
+-rw-r--r-- 1 root root  3910 May 15 11:37 fcrdns.nse
+-rw-r--r-- 1 root root  1083 May 15 11:37 finger.nse
+-rw-r--r-- 1 root root  4183 May 15 11:37 fingerprint-strings.nse
+-rw-r--r-- 1 root root 29093 May 15 11:37 firewalk.nse
+-rw-r--r-- 1 root root  8887 May 15 11:37 firewall-bypass.nse
+-rw-r--r-- 1 root root 10811 May 15 11:37 flume-master-info.nse
+-rw-r--r-- 1 root root  3796 May 15 11:37 fox-info.nse
+-rw-r--r-- 1 root root  3806 May 15 11:37 freelancer-info.nse
+-rw-r--r-- 1 root root  4530 May 15 11:37 ftp-anon.nse
+-rw-r--r-- 1 root root  3253 May 15 11:37 ftp-bounce.nse
+-rw-r--r-- 1 root root  3108 May 15 11:37 ftp-brute.nse
+-rw-r--r-- 1 root root  3272 May 15 11:37 ftp-libopie.nse
+-rw-r--r-- 1 root root  3290 May 15 11:37 ftp-proftpd-backdoor.nse
+-rw-r--r-- 1 root root  3768 May 15 11:37 ftp-syst.nse
+-rw-r--r-- 1 root root  6021 May 15 11:37 ftp-vsftpd-backdoor.nse
+-rw-r--r-- 1 root root  5923 May 15 11:37 ftp-vuln-cve2010-4221.nse
+-rw-r--r-- 1 root root  7919 May 15 11:37 ganglia-info.nse
+-rw-r--r-- 1 root root  1859 May 15 11:37 giop-info.nse
+-rw-r--r-- 1 root root  6850 May 15 11:37 gkrellm-info.nse
+-rw-r--r-- 1 root root  2342 May 15 11:37 gopher-ls.nse
+-rw-r--r-- 1 root root  2618 May 15 11:37 gpsd-info.nse
+-rw-r--r-- 1 root root  1927 May 15 11:37 hadoop-datanode-info.nse
+-rw-r--r-- 1 root root  7033 May 15 11:37 hadoop-jobtracker-info.nse
+-rw-r--r-- 1 root root  6697 May 15 11:37 hadoop-namenode-info.nse
+-rw-r--r-- 1 root root  4514 May 15 11:37 hadoop-secondary-namenode-info.nse
+-rw-r--r-- 1 root root  2955 May 15 11:37 hadoop-tasktracker-info.nse
+-rw-r--r-- 1 root root 10924 May 15 11:37 hartip-info.nse
+-rw-r--r-- 1 root root  5483 May 15 11:37 hbase-master-info.nse
+-rw-r--r-- 1 root root  3645 May 15 11:37 hbase-region-info.nse
+-rw-r--r-- 1 root root  1853 May 15 11:37 hddtemp-info.nse
+-rw-r--r-- 1 root root  4424 May 15 11:37 hnap-info.nse
+-rw-r--r-- 1 root root  3798 May 15 11:37 hostmap-bfk.nse
+-rw-r--r-- 1 root root  4933 May 15 11:37 hostmap-crtsh.nse
+-rw-r--r-- 1 root root  2100 May 15 11:37 hostmap-robtex.nse
+-rw-r--r-- 1 root root  2153 May 15 11:37 http-adobe-coldfusion-apsa1301.nse
+-rw-r--r-- 1 root root  5149 May 15 11:37 http-affiliate-id.nse
+-rw-r--r-- 1 root root  1950 May 15 11:37 http-apache-negotiation.nse
+-rw-r--r-- 1 root root  4499 May 15 11:37 http-apache-server-status.nse
+-rw-r--r-- 1 root root  1805 May 15 11:37 http-aspnet-debug.nse
+-rw-r--r-- 1 root root  3959 May 15 11:37 http-auth-finder.nse
+-rw-r--r-- 1 root root  3187 May 15 11:37 http-auth.nse
+-rw-r--r-- 1 root root  2865 May 15 11:37 http-avaya-ipoffice-users.nse
+-rw-r--r-- 1 root root  4372 May 15 11:37 http-awstatstotals-exec.nse
+-rw-r--r-- 1 root root  6872 May 15 11:37 http-axis2-dir-traversal.nse
+-rw-r--r-- 1 root root  5484 May 15 11:37 http-backup-finder.nse
+-rw-r--r-- 1 root root  6387 May 15 11:37 http-barracuda-dir-traversal.nse
+-rw-r--r-- 1 root root  2038 May 15 11:37 http-bigip-cookie.nse
+-rw-r--r-- 1 root root  4920 May 15 11:37 http-brute.nse
+-rw-r--r-- 1 root root  4436 May 15 11:37 http-cakephp-version.nse
+-rw-r--r-- 1 root root  4927 May 15 11:37 http-chrono.nse
+-rw-r--r-- 1 root root  1695 May 15 11:37 http-cisco-anyconnect.nse
+-rw-r--r-- 1 root root  5520 May 15 11:37 http-coldfusion-subzero.nse
+-rw-r--r-- 1 root root  4150 May 15 11:37 http-comments-displayer.nse
+-rw-r--r-- 1 root root  7251 May 15 11:37 http-config-backup.nse
+-rw-r--r-- 1 root root  5139 May 15 11:37 http-cookie-flags.nse
+-rw-r--r-- 1 root root  2577 May 15 11:37 http-cors.nse
+-rw-r--r-- 1 root root 13803 May 15 11:37 http-cross-domain-policy.nse
+-rw-r--r-- 1 root root  5418 May 15 11:37 http-csrf.nse
+-rw-r--r-- 1 root root  1718 May 15 11:37 http-date.nse
+-rw-r--r-- 1 root root 17388 May 15 11:37 http-default-accounts.nse
+-rw-r--r-- 1 root root  4288 May 15 11:37 http-devframework.nse
+-rw-r--r-- 1 root root  2529 May 15 11:37 http-dlink-backdoor.nse
+-rw-r--r-- 1 root root  4452 May 15 11:37 http-dombased-xss.nse
+-rw-r--r-- 1 root root 13893 May 15 11:37 http-domino-enum-passwords.nse
+-rw-r--r-- 1 root root  6931 May 15 11:37 http-drupal-enum.nse
+-rw-r--r-- 1 root root  2256 May 15 11:37 http-drupal-enum-users.nse
+-rw-r--r-- 1 root root 20667 May 15 11:37 http-enum.nse
+-rw-r--r-- 1 root root  3347 May 15 11:37 http-errors.nse
+-rw-r--r-- 1 root root 20413 May 15 11:37 http-exif-spider.nse
+-rw-r--r-- 1 root root  5199 May 15 11:37 http-favicon.nse
+-rw-r--r-- 1 root root  4451 May 15 11:37 http-feed.nse
+-rw-r--r-- 1 root root  9076 May 15 11:37 http-fetch.nse
+-rw-r--r-- 1 root root 11327 May 15 11:37 http-fileupload-exploiter.nse
+-rw-r--r-- 1 root root 21101 May 15 11:37 http-form-brute.nse
+-rw-r--r-- 1 root root  7934 May 15 11:37 http-form-fuzzer.nse
+-rw-r--r-- 1 root root  2739 May 15 11:37 http-frontpage-login.nse
+-rw-r--r-- 1 root root  2164 May 15 11:37 http-generator.nse
+-rw-r--r-- 1 root root 12100 May 15 11:37 http-git.nse
+-rw-r--r-- 1 root root  3195 May 15 11:37 http-gitweb-projects-enum.nse
+-rw-r--r-- 1 root root  3381 May 15 11:37 http-google-malware.nse
+-rw-r--r-- 1 root root 11692 May 15 11:37 http-grep.nse
+-rw-r--r-- 1 root root  1797 May 15 11:37 http-headers.nse
+-rw-r--r-- 1 root root  3383 May 15 11:37 http-hp-ilo-info.nse
+-rw-r--r-- 1 root root  6973 May 15 11:37 http-huawei-hg5xx-vuln.nse
+-rw-r--r-- 1 root root  2801 May 15 11:37 http-icloud-findmyiphone.nse
+-rw-r--r-- 1 root root  4085 May 15 11:37 http-icloud-sendmsg.nse
+-rw-r--r-- 1 root root  6073 May 15 11:37 http-iis-short-name-brute.nse
+-rw-r--r-- 1 root root  7921 May 15 11:37 http-iis-webdav-vuln.nse
+-rw-r--r-- 1 root root  2540 May 15 11:37 http-internal-ip-disclosure.nse
+-rw-r--r-- 1 root root  5422 May 15 11:37 http-joomla-brute.nse
+-rw-r--r-- 1 root root  5479 May 15 11:37 http-jsonp-detection.nse
+-rw-r--r-- 1 root root  2649 May 15 11:37 http-litespeed-sourcecode-download.nse
+-rw-r--r-- 1 root root  6120 May 15 11:37 http-ls.nse
+-rw-r--r-- 1 root root  3269 May 15 11:37 http-majordomo2-dir-traversal.nse
+-rw-r--r-- 1 root root  2838 May 15 11:37 http-malware-host.nse
+-rw-r--r-- 1 root root  3704 May 15 11:37 http-mcmp.nse
+-rw-r--r-- 1 root root  7320 May 15 11:37 http-methods.nse
+-rw-r--r-- 1 root root  6895 May 15 11:37 http-method-tamper.nse
+-rw-r--r-- 1 root root  2726 May 15 11:37 http-mobileversion-checker.nse
+-rw-r--r-- 1 root root  4461 May 15 11:37 http-ntlm-info.nse
+-rw-r--r-- 1 root root  8269 May 15 11:37 http-open-proxy.nse
+-rw-r--r-- 1 root root  4756 May 15 11:37 http-open-redirect.nse
+-rw-r--r-- 1 root root  7023 May 15 11:37 http-passwd.nse
+-rw-r--r-- 1 root root  6225 May 15 11:37 http-phpmyadmin-dir-traversal.nse
+-rw-r--r-- 1 root root  5822 May 15 11:37 http-phpself-xss.nse
+-rw-r--r-- 1 root root  7070 May 15 11:37 http-php-version.nse
+-rw-r--r-- 1 root root  3487 May 15 11:37 http-proxy-brute.nse
+-rw-r--r-- 1 root root  1930 May 15 11:37 http-put.nse
+-rw-r--r-- 1 root root  3591 May 15 11:37 http-qnap-nas-info.nse
+-rw-r--r-- 1 root root  2175 May 15 11:37 http-referer-checker.nse
+-rw-r--r-- 1 root root  9599 May 15 11:37 http-rfi-spider.nse
+-rw-r--r-- 1 root root  2737 May 15 11:37 http-robots.txt.nse
+-rw-r--r-- 1 root root  2305 May 15 11:37 http-robtex-reverse-ip.nse
+-rw-r--r-- 1 root root  2776 May 15 11:37 http-robtex-shared-ns.nse
+-rw-r--r-- 1 root root  5034 May 15 11:37 http-sap-netweaver-leak.nse
+-rw-r--r-- 1 root root 15956 May 15 11:37 http-security-headers.nse
+-rw-r--r-- 1 root root  3283 May 15 11:37 http-server-header.nse
+-rw-r--r-- 1 root root  5489 May 15 11:37 http-shellshock.nse
+-rw-r--r-- 1 root root  5344 May 15 11:37 http-sitemap-generator.nse
+-rw-r--r-- 1 root root  5464 May 15 11:37 http-slowloris-check.nse
+-rw-r--r-- 1 root root 11167 May 15 11:37 http-slowloris.nse
+-rw-r--r-- 1 root root  9404 May 15 11:37 http-sql-injection.nse
+-rw-r--r-- 1 root root  2528 May 15 11:37 https-redirect.nse
+-rw-r--r-- 1 root root  8451 May 15 11:37 http-stored-xss.nse
+-rw-r--r-- 1 root root  4018 May 15 11:37 http-svn-enum.nse
+-rw-r--r-- 1 root root  4360 May 15 11:37 http-svn-info.nse
+-rw-r--r-- 1 root root  2317 May 15 11:37 http-title.nse
+-rw-r--r-- 1 root root  6026 May 15 11:37 http-tplink-dir-traversal.nse
+-rw-r--r-- 1 root root  1947 May 15 11:37 http-trace.nse
+-rw-r--r-- 1 root root  5294 May 15 11:37 http-traceroute.nse
+-rw-r--r-- 1 root root  6437 May 15 11:37 http-trane-info.nse
+-rw-r--r-- 1 root root  5549 May 15 11:37 http-unsafe-output-escaping.nse
+-rw-r--r-- 1 root root  5403 May 15 11:37 http-useragent-tester.nse
+-rw-r--r-- 1 root root  4550 May 15 11:37 http-userdir-enum.nse
+-rw-r--r-- 1 root root  5820 May 15 11:37 http-vhosts.nse
+-rw-r--r-- 1 root root 10770 May 15 11:37 http-virustotal.nse
+-rw-r--r-- 1 root root  2078 May 15 11:37 http-vlcstreamer-ls.nse
+-rw-r--r-- 1 root root  4111 May 15 11:37 http-vmware-path-vuln.nse
+-rw-r--r-- 1 root root  3273 May 15 11:37 http-vuln-cve2006-3392.nse
+-rw-r--r-- 1 root root  6610 May 15 11:37 http-vuln-cve2009-3960.nse
+-rw-r--r-- 1 root root  2957 May 15 11:37 http-vuln-cve2010-0738.nse
+-rw-r--r-- 1 root root  5607 May 15 11:37 http-vuln-cve2010-2861.nse
+-rw-r--r-- 1 root root  4527 May 15 11:37 http-vuln-cve2011-3192.nse
+-rw-r--r-- 1 root root  5851 May 15 11:37 http-vuln-cve2011-3368.nse
+-rw-r--r-- 1 root root  4403 May 15 11:37 http-vuln-cve2012-1823.nse
+-rw-r--r-- 1 root root  4831 May 15 11:37 http-vuln-cve2013-0156.nse
+-rw-r--r-- 1 root root  2853 May 15 11:37 http-vuln-cve2013-6786.nse
+-rw-r--r-- 1 root root  5009 May 15 11:37 http-vuln-cve2013-7091.nse
+-rw-r--r-- 1 root root  2945 May 15 11:37 http-vuln-cve2014-2126.nse
+-rw-r--r-- 1 root root  3334 May 15 11:37 http-vuln-cve2014-2127.nse
+-rw-r--r-- 1 root root  3193 May 15 11:37 http-vuln-cve2014-2128.nse
+-rw-r--r-- 1 root root  2979 May 15 11:37 http-vuln-cve2014-2129.nse
+-rw-r--r-- 1 root root 14018 May 15 11:37 http-vuln-cve2014-3704.nse
+-rw-r--r-- 1 root root  4523 May 15 11:37 http-vuln-cve2014-8877.nse
+-rw-r--r-- 1 root root  7774 May 15 11:37 http-vuln-cve2015-1427.nse
+-rw-r--r-- 1 root root  3443 May 15 11:37 http-vuln-cve2015-1635.nse
+-rw-r--r-- 1 root root  4372 May 15 11:37 http-vuln-cve2017-1001000.nse
+-rw-r--r-- 1 root root  2594 May 15 11:37 http-vuln-cve2017-5638.nse
+-rw-r--r-- 1 root root  5480 May 15 11:37 http-vuln-cve2017-5689.nse
+-rw-r--r-- 1 root root  5187 May 15 11:37 http-vuln-cve2017-8917.nse
+-rw-r--r-- 1 root root  2699 May 15 11:37 http-vuln-misfortune-cookie.nse
+-rw-r--r-- 1 root root  4225 May 15 11:37 http-vuln-wnr1000-creds.nse
+-rw-r--r-- 1 root root  5422 May 15 11:37 http-waf-detect.nse
+-rw-r--r-- 1 root root 19339 May 15 11:37 http-waf-fingerprint.nse
+-rw-r--r-- 1 root root  5806 May 15 11:37 http-webdav-scan.nse
+-rw-r--r-- 1 root root  5061 May 15 11:37 http-wordpress-brute.nse
+-rw-r--r-- 1 root root 10866 May 15 11:37 http-wordpress-enum.nse
+-rw-r--r-- 1 root root  4641 May 15 11:37 http-wordpress-users.nse
+-rw-r--r-- 1 root root  2653 May 15 11:37 http-xssed.nse
+-rw-r--r-- 1 root root  2133 May 15 11:37 iax2-brute.nse
+-rw-r--r-- 1 root root  1377 May 15 11:37 iax2-version.nse
+-rw-r--r-- 1 root root  3462 May 15 11:37 icap-info.nse
+-rw-r--r-- 1 root root 12333 May 15 11:37 iec61850-mms.nse
+-rw-r--r-- 1 root root  4343 May 15 11:37 iec-identify.nse
+-rw-r--r-- 1 root root  5107 May 15 11:37 ike-version.nse
+-rw-r--r-- 1 root root  4441 May 15 11:37 imap-brute.nse
+-rw-r--r-- 1 root root  1515 May 15 11:37 imap-capabilities.nse
+-rw-r--r-- 1 root root  5366 May 15 11:37 imap-ntlm-info.nse
+-rw-r--r-- 1 root root  6494 May 15 11:37 impress-remote-discover.nse
+-rw-r--r-- 1 root root  2935 May 15 11:37 informix-brute.nse
+-rw-r--r-- 1 root root  3414 May 15 11:37 informix-query.nse
+-rw-r--r-- 1 root root  4548 May 15 11:37 informix-tables.nse
+-rw-r--r-- 1 root root  3213 May 15 11:37 ip-forwarding.nse
+-rw-r--r-- 1 root root  2101 May 15 11:37 ip-geolocation-geoplugin.nse
+-rw-r--r-- 1 root root  2939 May 15 11:37 ip-geolocation-ipinfodb.nse
+-rw-r--r-- 1 root root  6025 May 15 11:37 ip-geolocation-map-bing.nse
+-rw-r--r-- 1 root root  6003 May 15 11:37 ip-geolocation-map-google.nse
+-rw-r--r-- 1 root root  2343 May 15 11:37 ip-geolocation-map-kml.nse
+-rw-r--r-- 1 root root 23366 May 15 11:37 ip-geolocation-maxmind.nse
+-rw-r--r-- 1 root root  2437 May 15 11:37 ip-https-discover.nse
+-rw-r--r-- 1 root root  5567 May 15 11:37 ipidseq.nse
+-rw-r--r-- 1 root root  3425 May 15 11:37 ipmi-brute.nse
+-rw-r--r-- 1 root root  3161 May 15 11:37 ipmi-cipher-zero.nse
+-rw-r--r-- 1 root root  3745 May 15 11:37 ipmi-version.nse
+-rw-r--r-- 1 root root 16428 May 15 11:37 ipv6-multicast-mld-list.nse
+-rw-r--r-- 1 root root  8388 May 15 11:37 ipv6-node-info.nse
+-rw-r--r-- 1 root root  6306 May 15 11:37 ipv6-ra-flood.nse
+-rw-r--r-- 1 root root  6946 May 15 11:37 irc-botnet-channels.nse
+-rw-r--r-- 1 root root  3574 May 15 11:37 irc-brute.nse
+-rw-r--r-- 1 root root  4507 May 15 11:37 irc-info.nse
+-rw-r--r-- 1 root root  6361 May 15 11:37 irc-sasl-brute.nse
+-rw-r--r-- 1 root root  8480 May 15 11:37 irc-unrealircd-backdoor.nse
+-rw-r--r-- 1 root root  2390 May 15 11:37 iscsi-brute.nse
+-rw-r--r-- 1 root root  3117 May 15 11:37 iscsi-info.nse
+-rw-r--r-- 1 root root  1952 May 15 11:37 isns-info.nse
+-rw-r--r-- 1 root root  3330 May 15 11:37 jdwp-exec.nse
+-rw-r--r-- 1 root root  3116 May 15 11:37 jdwp-info.nse
+-rw-r--r-- 1 root root  3048 May 15 11:37 jdwp-inject.nse
+-rw-r--r-- 1 root root  2330 May 15 11:37 jdwp-version.nse
+-rw-r--r-- 1 root root 10355 May 15 11:37 knx-gateway-discover.nse
+-rw-r--r-- 1 root root  5565 May 15 11:37 knx-gateway-info.nse
+-rw-r--r-- 1 root root 13235 May 15 11:37 krb5-enum-users.nse
+-rw-r--r-- 1 root root 14130 May 15 11:37 ldap-brute.nse
+-rw-r--r-- 1 root root  4995 May 15 11:37 ldap-novell-getpass.nse
+-rw-r--r-- 1 root root  9414 May 15 11:37 ldap-rootdse.nse
+-rw-r--r-- 1 root root 12435 May 15 11:37 ldap-search.nse
+-rw-r--r-- 1 root root  2546 May 15 11:37 lexmark-config.nse
+-rw-r--r-- 1 root root  6476 May 15 11:37 llmnr-resolve.nse
+-rw-r--r-- 1 root root 10064 May 15 11:37 lltd-discovery.nse
+-rw-r--r-- 1 root root  7570 May 15 11:37 lu-enum.nse
+-rw-r--r-- 1 root root  6423 May 15 11:37 maxdb-info.nse
+-rw-r--r-- 1 root root  2635 May 15 11:37 mcafee-epo-agent.nse
+-rw-r--r-- 1 root root  2884 May 15 11:37 membase-brute.nse
+-rw-r--r-- 1 root root  4900 May 15 11:37 membase-http-info.nse
+-rw-r--r-- 1 root root  5657 May 15 11:37 memcached-info.nse
+-rw-r--r-- 1 root root 10089 May 15 11:37 metasploit-info.nse
+-rw-r--r-- 1 root root  2952 May 15 11:37 metasploit-msgrpc-brute.nse
+-rw-r--r-- 1 root root  3199 May 15 11:37 metasploit-xmlrpc-brute.nse
+-rw-r--r-- 1 root root  3090 May 15 11:37 mikrotik-routeros-brute.nse
+-rw-r--r-- 1 root root  3264 May 15 11:37 mmouse-brute.nse
+-rw-r--r-- 1 root root  5686 May 15 11:37 mmouse-exec.nse
+-rw-r--r-- 1 root root  5996 May 15 11:37 modbus-discover.nse
+-rw-r--r-- 1 root root  2588 May 15 11:37 mongodb-brute.nse
+-rw-r--r-- 1 root root  2593 May 15 11:37 mongodb-databases.nse
+-rw-r--r-- 1 root root  3673 May 15 11:37 mongodb-info.nse
+-rw-r--r-- 1 root root 15063 May 15 11:37 mqtt-subscribe.nse
+-rw-r--r-- 1 root root  9000 May 15 11:37 mrinfo.nse
+-rw-r--r-- 1 root root  3235 May 15 11:37 msrpc-enum.nse
+-rw-r--r-- 1 root root 11619 May 15 11:37 ms-sql-brute.nse
+-rw-r--r-- 1 root root  5498 May 15 11:37 ms-sql-config.nse
+-rw-r--r-- 1 root root  2631 May 15 11:37 ms-sql-dac.nse
+-rw-r--r-- 1 root root  3580 May 15 11:37 ms-sql-dump-hashes.nse
+-rw-r--r-- 1 root root  6563 May 15 11:37 ms-sql-empty-password.nse
+-rw-r--r-- 1 root root  5378 May 15 11:37 ms-sql-hasdbaccess.nse
+-rw-r--r-- 1 root root  9782 May 15 11:37 ms-sql-info.nse
+-rw-r--r-- 1 root root  4051 May 15 11:37 ms-sql-ntlm-info.nse
+-rw-r--r-- 1 root root  4221 May 15 11:37 ms-sql-query.nse
+-rw-r--r-- 1 root root  8936 May 15 11:37 ms-sql-tables.nse
+-rw-r--r-- 1 root root  5899 May 15 11:37 ms-sql-xp-cmdshell.nse
+-rw-r--r-- 1 root root 11856 May 15 11:37 mtrace.nse
+-rw-r--r-- 1 root root 13767 May 15 11:37 multicast-profinet-discovery.nse
+-rw-r--r-- 1 root root  3424 May 15 11:37 murmur-version.nse
+-rw-r--r-- 1 root root  6688 May 15 11:37 mysql-audit.nse
+-rw-r--r-- 1 root root  2977 May 15 11:37 mysql-brute.nse
+-rw-r--r-- 1 root root  2945 May 15 11:37 mysql-databases.nse
+-rw-r--r-- 1 root root  3263 May 15 11:37 mysql-dump-hashes.nse
+-rw-r--r-- 1 root root  2020 May 15 11:37 mysql-empty-password.nse
+-rw-r--r-- 1 root root  3413 May 15 11:37 mysql-enum.nse
+-rw-r--r-- 1 root root  3455 May 15 11:37 mysql-info.nse
+-rw-r--r-- 1 root root  3714 May 15 11:37 mysql-query.nse
+-rw-r--r-- 1 root root  2811 May 15 11:37 mysql-users.nse
+-rw-r--r-- 1 root root  3265 May 15 11:37 mysql-variables.nse
+-rw-r--r-- 1 root root  6977 May 15 11:37 mysql-vuln-cve2012-2122.nse
+-rw-r--r-- 1 root root  1257 May 15 11:37 nat-pmp-info.nse
+-rw-r--r-- 1 root root  4520 May 15 11:37 nat-pmp-mapport.nse
+-rw-r--r-- 1 root root  5387 May 15 11:37 nbd-info.nse
+-rw-r--r-- 1 root root  1997 May 15 11:37 nbns-interfaces.nse
+-rw-r--r-- 1 root root  7718 May 15 11:37 nbstat.nse
+-rw-r--r-- 1 root root  1341 May 15 11:37 ncp-enum-users.nse
+-rw-r--r-- 1 root root  1259 May 15 11:37 ncp-serverinfo.nse
+-rw-r--r-- 1 root root  2323 May 15 11:37 ndmp-fs-info.nse
+-rw-r--r-- 1 root root  2307 May 15 11:37 ndmp-version.nse
+-rw-r--r-- 1 root root  4562 May 15 11:37 nessus-brute.nse
+-rw-r--r-- 1 root root  4100 May 15 11:37 nessus-xmlrpc-brute.nse
+-rw-r--r-- 1 root root  1830 May 15 11:37 netbus-auth-bypass.nse
+-rw-r--r-- 1 root root  1677 May 15 11:37 netbus-brute.nse
+-rw-r--r-- 1 root root  5690 May 15 11:37 netbus-info.nse
+-rw-r--r-- 1 root root  1179 May 15 11:37 netbus-version.nse
+-rw-r--r-- 1 root root  2734 May 15 11:37 nexpose-brute.nse
+-rw-r--r-- 1 root root 14534 May 15 11:37 nfs-ls.nse
+-rw-r--r-- 1 root root  2714 May 15 11:37 nfs-showmount.nse
+-rw-r--r-- 1 root root  9947 May 15 11:37 nfs-statfs.nse
+-rw-r--r-- 1 root root  6422 May 15 11:37 nje-node-brute.nse
+-rw-r--r-- 1 root root  6139 May 15 11:37 nje-pass-brute.nse
+-rw-r--r-- 1 root root  5119 May 15 11:37 nntp-ntlm-info.nse
+-rw-r--r-- 1 root root  4098 May 15 11:37 nping-brute.nse
+-rw-r--r-- 1 root root  7689 May 15 11:37 nrpe-enum.nse
+-rw-r--r-- 1 root root  6098 May 15 11:37 ntp-info.nse
+-rw-r--r-- 1 root root 32773 May 15 11:37 ntp-monlist.nse
+-rw-r--r-- 1 root root  2180 May 15 11:37 omp2-brute.nse
+-rw-r--r-- 1 root root  3320 May 15 11:37 omp2-enum-targets.nse
+-rw-r--r-- 1 root root  6805 May 15 11:37 omron-info.nse
+-rw-r--r-- 1 root root  6594 May 15 11:37 openflow-info.nse
+-rw-r--r-- 1 root root  5243 May 15 11:37 openlookup-info.nse
+-rw-r--r-- 1 root root  3172 May 15 11:37 openvas-otp-brute.nse
+-rw-r--r-- 1 root root  7077 May 15 11:37 openwebnet-discovery.nse
+-rw-r--r-- 1 root root  7416 May 15 11:37 oracle-brute.nse
+-rw-r--r-- 1 root root  6733 May 15 11:37 oracle-brute-stealth.nse
+-rw-r--r-- 1 root root  3951 May 15 11:37 oracle-enum-users.nse
+-rw-r--r-- 1 root root  4821 May 15 11:37 oracle-sid-brute.nse
+-rw-r--r-- 1 root root  3167 May 15 11:37 oracle-tns-version.nse
+-rw-r--r-- 1 root root  3021 May 15 11:37 ovs-agent-version.nse
+-rw-r--r-- 1 root root 22474 May 15 11:37 p2p-conficker.nse
+-rw-r--r-- 1 root root 10157 May 15 11:37 path-mtu.nse
+-rw-r--r-- 1 root root  5317 May 15 11:37 pcanywhere-brute.nse
+-rw-r--r-- 1 root root  3563 May 15 11:37 pcworx-info.nse
+-rw-r--r-- 1 root root  5378 May 15 11:37 pgsql-brute.nse
+-rw-r--r-- 1 root root  3042 May 15 11:37 pjl-ready-message.nse
+-rw-r--r-- 1 root root  4047 May 15 11:37 pop3-brute.nse
+-rw-r--r-- 1 root root  1397 May 15 11:37 pop3-capabilities.nse
+-rw-r--r-- 1 root root  4941 May 15 11:37 pop3-ntlm-info.nse
+-rw-r--r-- 1 root root  4393 May 15 11:37 port-states.nse
+-rw-r--r-- 1 root root  3328 May 15 11:37 pptp-version.nse
+-rw-r--r-- 1 root root  5603 May 15 11:37 profinet-cm-lookup.nse
+-rw-r--r-- 1 root root  8712 May 15 11:37 puppet-naivesigning.nse
+-rw-r--r-- 1 root root  4326 May 15 11:37 qconn-exec.nse
+-rw-r--r-- 1 root root 14597 May 15 11:37 qscan.nse
+-rw-r--r-- 1 root root 11070 May 15 11:37 quake1-info.nse
+-rw-r--r-- 1 root root  6732 May 15 11:37 quake3-info.nse
+-rw-r--r-- 1 root root  7274 May 15 11:37 quake3-master-getservers.nse
+-rw-r--r-- 1 root root  5961 May 15 11:37 rdp-enum-encryption.nse
+-rw-r--r-- 1 root root  5791 May 15 11:37 rdp-ntlm-info.nse
+-rw-r--r-- 1 root root  9425 May 15 11:37 rdp-vuln-ms12-020.nse
+-rw-r--r-- 1 root root  3264 May 15 11:37 realvnc-auth-bypass.nse
+-rw-r--r-- 1 root root  2795 May 15 11:37 redis-brute.nse
+-rw-r--r-- 1 root root  7004 May 15 11:37 redis-info.nse
+-rw-r--r-- 1 root root  4846 May 15 11:37 resolveall.nse
+-rw-r--r-- 1 root root  3554 May 15 11:37 reverse-index.nse
+-rw-r--r-- 1 root root  3128 May 15 11:37 rexec-brute.nse
+-rw-r--r-- 1 root root  1884 May 15 11:37 rfc868-time.nse
+-rw-r--r-- 1 root root  5564 May 15 11:37 riak-http-info.nse
+-rw-r--r-- 1 root root  4865 May 15 11:37 rlogin-brute.nse
+-rw-r--r-- 1 root root 10642 May 15 11:37 rmi-dumpregistry.nse
+-rw-r--r-- 1 root root  4011 May 15 11:37 rmi-vuln-classloader.nse
+-rw-r--r-- 1 root root  2140 May 15 11:37 rpcap-brute.nse
+-rw-r--r-- 1 root root  2654 May 15 11:37 rpcap-info.nse
+-rw-r--r-- 1 root root  8820 May 15 11:37 rpc-grind.nse
+-rw-r--r-- 1 root root  4601 May 15 11:37 rpcinfo.nse
+-rw-r--r-- 1 root root  6528 May 15 11:37 rsa-vuln-roca.nse
+-rw-r--r-- 1 root root  3132 May 15 11:37 rsync-brute.nse
+-rw-r--r-- 1 root root  1216 May 15 11:37 rsync-list-modules.nse
+-rw-r--r-- 1 root root  1479 May 15 11:37 rtsp-methods.nse
+-rw-r--r-- 1 root root  5739 May 15 11:37 rtsp-url-brute.nse
+-rw-r--r-- 1 root root  5528 May 15 11:37 rusers.nse
+-rw-r--r-- 1 root root 10287 May 15 11:37 s7-info.nse
+-rw-r--r-- 1 root root  4148 May 15 11:37 samba-vuln-cve-2012-1182.nse
+-rw-r--r-- 1 root root 52505 May 15 11:37 script.db
+-rw-r--r-- 1 root root  8733 May 15 11:37 servicetags.nse
+-rw-r--r-- 1 root root  6573 May 15 11:37 shodan-api.nse
+-rw-r--r-- 1 root root  3627 May 15 11:37 sip-brute.nse
+-rw-r--r-- 1 root root  6099 May 15 11:37 sip-call-spoof.nse
+-rw-r--r-- 1 root root  8585 May 15 11:37 sip-enum-users.nse
+-rw-r--r-- 1 root root  1652 May 15 11:37 sip-methods.nse
+-rw-r--r-- 1 root root  2164 May 15 11:37 skypev2-version.nse
+-rw-r--r-- 1 root root  3753 May 15 11:37 smb2-capabilities.nse
+-rw-r--r-- 1 root root  2689 May 15 11:37 smb2-security-mode.nse
+-rw-r--r-- 1 root root  1408 May 15 11:37 smb2-time.nse
+-rw-r--r-- 1 root root  5269 May 15 11:37 smb2-vuln-uptime.nse
+-rw-r--r-- 1 root root 45061 May 15 11:37 smb-brute.nse
+-rw-r--r-- 1 root root  5289 May 15 11:37 smb-double-pulsar-backdoor.nse
+-rw-r--r-- 1 root root  4840 May 15 11:37 smb-enum-domains.nse
+-rw-r--r-- 1 root root  5971 May 15 11:37 smb-enum-groups.nse
+-rw-r--r-- 1 root root  8043 May 15 11:37 smb-enum-processes.nse
+-rw-r--r-- 1 root root 27274 May 15 11:37 smb-enum-services.nse
+-rw-r--r-- 1 root root 12017 May 15 11:37 smb-enum-sessions.nse
+-rw-r--r-- 1 root root  6923 May 15 11:37 smb-enum-shares.nse
+-rw-r--r-- 1 root root 12527 May 15 11:37 smb-enum-users.nse
+-rw-r--r-- 1 root root  4418 May 15 11:37 smb-flood.nse
+-rw-r--r-- 1 root root  7471 May 15 11:37 smb-ls.nse
+-rw-r--r-- 1 root root  8758 May 15 11:37 smb-mbenum.nse
+-rw-r--r-- 1 root root  8220 May 15 11:37 smb-os-discovery.nse
+-rw-r--r-- 1 root root  4982 May 15 11:37 smb-print-text.nse
+-rw-r--r-- 1 root root  1833 May 15 11:37 smb-protocols.nse
+-rw-r--r-- 1 root root 63596 May 15 11:37 smb-psexec.nse
+-rw-r--r-- 1 root root  5190 May 15 11:37 smb-security-mode.nse
+-rw-r--r-- 1 root root  2424 May 15 11:37 smb-server-stats.nse
+-rw-r--r-- 1 root root 14159 May 15 11:37 smb-system-info.nse
+-rw-r--r-- 1 root root  7524 May 15 11:37 smb-vuln-conficker.nse
+-rw-r--r-- 1 root root  6402 May 15 11:37 smb-vuln-cve2009-3103.nse
+-rw-r--r-- 1 root root 23154 May 15 11:37 smb-vuln-cve-2017-7494.nse
+-rw-r--r-- 1 root root  6545 May 15 11:37 smb-vuln-ms06-025.nse
+-rw-r--r-- 1 root root  5386 May 15 11:37 smb-vuln-ms07-029.nse
+-rw-r--r-- 1 root root  5688 May 15 11:37 smb-vuln-ms08-067.nse
+-rw-r--r-- 1 root root  5647 May 15 11:37 smb-vuln-ms10-054.nse
+-rw-r--r-- 1 root root  7214 May 15 11:37 smb-vuln-ms10-061.nse
+-rw-r--r-- 1 root root  7344 May 15 11:37 smb-vuln-ms17-010.nse
+-rw-r--r-- 1 root root  4400 May 15 11:37 smb-vuln-regsvc-dos.nse
+-rw-r--r-- 1 root root  6586 May 15 11:37 smb-vuln-webexec.nse
+-rw-r--r-- 1 root root  5084 May 15 11:37 smb-webexec-exploit.nse
+-rw-r--r-- 1 root root  4309 May 15 11:37 smtp-brute.nse
+-rw-r--r-- 1 root root  4957 May 15 11:37 smtp-commands.nse
+-rw-r--r-- 1 root root 12006 May 15 11:37 smtp-enum-users.nse
+-rw-r--r-- 1 root root  5873 May 15 11:37 smtp-ntlm-info.nse
+-rw-r--r-- 1 root root 10148 May 15 11:37 smtp-open-relay.nse
+-rw-r--r-- 1 root root   716 May 15 11:37 smtp-strangeport.nse
+-rw-r--r-- 1 root root 14781 May 15 11:37 smtp-vuln-cve2010-4344.nse
+-rw-r--r-- 1 root root  7719 May 15 11:37 smtp-vuln-cve2011-1720.nse
+-rw-r--r-- 1 root root  7603 May 15 11:37 smtp-vuln-cve2011-1764.nse
+-rw-r--r-- 1 root root  4327 May 15 11:37 sniffer-detect.nse
+-rw-r--r-- 1 root root  7816 May 15 11:37 snmp-brute.nse
+-rw-r--r-- 1 root root  4388 May 15 11:37 snmp-hh3c-logins.nse
+-rw-r--r-- 1 root root  5216 May 15 11:37 snmp-info.nse
+-rw-r--r-- 1 root root 28644 May 15 11:37 snmp-interfaces.nse
+-rw-r--r-- 1 root root  5978 May 15 11:37 snmp-ios-config.nse
+-rw-r--r-- 1 root root  4156 May 15 11:37 snmp-netstat.nse
+-rw-r--r-- 1 root root  4431 May 15 11:37 snmp-processes.nse
+-rw-r--r-- 1 root root  1857 May 15 11:37 snmp-sysdescr.nse
+-rw-r--r-- 1 root root  2570 May 15 11:37 snmp-win32-services.nse
+-rw-r--r-- 1 root root  2739 May 15 11:37 snmp-win32-shares.nse
+-rw-r--r-- 1 root root  4713 May 15 11:37 snmp-win32-software.nse
+-rw-r--r-- 1 root root  2016 May 15 11:37 snmp-win32-users.nse
+-rw-r--r-- 1 root root  1753 May 15 11:37 socks-auth-info.nse
+-rw-r--r-- 1 root root  2521 May 15 11:37 socks-brute.nse
+-rw-r--r-- 1 root root  6527 May 15 11:37 socks-open-proxy.nse
+-rw-r--r-- 1 root root  5391 May 15 11:37 ssh2-enum-algos.nse
+-rw-r--r-- 1 root root  1621 May 15 11:37 ssh-auth-methods.nse
+-rw-r--r-- 1 root root  3020 May 15 11:37 ssh-brute.nse
+-rw-r--r-- 1 root root 16036 May 15 11:37 ssh-hostkey.nse
+-rw-r--r-- 1 root root  5948 May 15 11:37 ssh-publickey-acceptance.nse
+-rw-r--r-- 1 root root  3781 May 15 11:37 ssh-run.nse
+-rw-r--r-- 1 root root  1423 May 15 11:37 sshv1.nse
+-rw-r--r-- 1 root root 10112 May 15 11:37 ssl-ccs-injection.nse
+-rw-r--r-- 1 root root  3900 May 15 11:37 ssl-cert-intaddr.nse
+-rw-r--r-- 1 root root 10347 May 15 11:37 ssl-cert.nse
+-rw-r--r-- 1 root root  6807 May 15 11:37 ssl-date.nse
+-rw-r--r-- 1 root root 39897 May 15 11:37 ssl-dh-params.nse
+-rw-r--r-- 1 root root 39964 May 15 11:37 ssl-enum-ciphers.nse
+-rw-r--r-- 1 root root  7768 May 15 11:37 ssl-heartbleed.nse
+-rw-r--r-- 1 root root  4331 May 15 11:37 ssl-known-key.nse
+-rw-r--r-- 1 root root 11201 May 15 11:37 ssl-poodle.nse
+-rw-r--r-- 1 root root 11249 May 15 11:37 sslv2-drown.nse
+-rw-r--r-- 1 root root  1575 May 15 11:37 sslv2.nse
+-rw-r--r-- 1 root root  2325 May 15 11:37 sstp-discover.nse
+-rw-r--r-- 1 root root  1188 May 15 11:37 stun-info.nse
+-rw-r--r-- 1 root root  1141 May 15 11:37 stun-version.nse
+-rw-r--r-- 1 root root  3393 May 15 11:37 stuxnet-detect.nse
+-rw-r--r-- 1 root root  3737 May 15 11:37 supermicro-ipmi-conf.nse
+-rw-r--r-- 1 root root  7528 May 15 11:37 svn-brute.nse
+-rw-r--r-- 1 root root  2923 May 15 11:37 targets-asn.nse
+-rw-r--r-- 1 root root  7536 May 15 11:37 targets-ipv6-map4to6.nse
+-rw-r--r-- 1 root root  5095 May 15 11:37 targets-ipv6-multicast-echo.nse
+-rw-r--r-- 1 root root  6383 May 15 11:37 targets-ipv6-multicast-invalid-dst.nse
+-rw-r--r-- 1 root root  4525 May 15 11:37 targets-ipv6-multicast-mld.nse
+-rw-r--r-- 1 root root  9218 May 15 11:37 targets-ipv6-multicast-slaac.nse
+-rw-r--r-- 1 root root  9268 May 15 11:37 targets-ipv6-wordlist.nse
+-rw-r--r-- 1 root root  4611 May 15 11:37 targets-sniffer.nse
+-rw-r--r-- 1 root root  1822 May 15 11:37 targets-traceroute.nse
+-rw-r--r-- 1 root root  3596 May 15 11:37 targets-xml.nse
+-rw-r--r-- 1 root root  2489 May 15 11:37 teamspeak2-version.nse
+-rw-r--r-- 1 root root 20216 May 15 11:37 telnet-brute.nse
+-rw-r--r-- 1 root root  3008 May 15 11:37 telnet-encryption.nse
+-rw-r--r-- 1 root root  4564 May 15 11:37 telnet-ntlm-info.nse
+-rw-r--r-- 1 root root  5736 May 15 11:37 tftp-enum.nse
+-rw-r--r-- 1 root root 10034 May 15 11:37 tftp-version.nse
+-rw-r--r-- 1 root root  6076 May 15 11:37 tls-alpn.nse
+-rw-r--r-- 1 root root  4174 May 15 11:37 tls-nextprotoneg.nse
+-rw-r--r-- 1 root root 11744 May 15 11:37 tls-ticketbleed.nse
+-rw-r--r-- 1 root root  4118 May 15 11:37 tn3270-screen.nse
+-rw-r--r-- 1 root root  3832 May 15 11:37 tor-consensus-checker.nse
+-rw-r--r-- 1 root root  5954 May 15 11:37 traceroute-geolocation.nse
+-rw-r--r-- 1 root root 13692 May 15 11:37 tso-brute.nse
+-rw-r--r-- 1 root root 10304 May 15 11:37 tso-enum.nse
+-rw-r--r-- 1 root root 10107 May 15 11:37 ubiquiti-discovery.nse
+-rw-r--r-- 1 root root   895 May 15 11:37 unittest.nse
+-rw-r--r-- 1 root root  3836 May 15 11:37 unusual-port.nse
+-rw-r--r-- 1 root root  1697 May 15 11:37 upnp-info.nse
+-rw-r--r-- 1 root root  3125 May 15 11:37 uptime-agent-info.nse
+-rw-r--r-- 1 root root  4197 May 15 11:37 url-snarf.nse
+-rw-r--r-- 1 root root 25403 May 15 11:37 ventrilo-info.nse
+-rw-r--r-- 1 root root  3190 May 15 11:37 versant-info.nse
+-rw-r--r-- 1 root root  3367 May 15 11:37 vmauthd-brute.nse
+-rw-r--r-- 1 root root  3013 May 15 11:37 vmware-version.nse
+-rw-r--r-- 1 root root  4217 May 15 11:37 vnc-brute.nse
+-rw-r--r-- 1 root root  4348 May 15 11:37 vnc-info.nse
+-rw-r--r-- 1 root root  3039 May 15 11:37 vnc-title.nse
+-rw-r--r-- 1 root root  5559 May 15 11:37 voldemort-info.nse
+-rw-r--r-- 1 root root 10381 May 15 11:37 vtam-enum.nse
+-rw-r--r-- 1 root root  7077 May 15 11:37 vulners.nse
+-rw-r--r-- 1 root root  2553 May 15 11:37 vuze-dht-info.nse
+-rw-r--r-- 1 root root  7789 May 15 11:37 wdb-version.nse
+-rw-r--r-- 1 root root  3509 May 15 11:37 weblogic-t3-info.nse
+-rw-r--r-- 1 root root  4203 May 15 11:37 whois-domain.nse
+-rw-r--r-- 1 root root 89578 May 15 11:37 whois-ip.nse
+-rw-r--r-- 1 root root  2629 May 15 11:37 wsdd-discover.nse
+-rw-r--r-- 1 root root  2286 May 15 11:37 x11-access.nse
+-rw-r--r-- 1 root root  2095 May 15 11:37 xdmcp-discover.nse
+-rw-r--r-- 1 root root  4362 May 15 11:37 xmlrpc-methods.nse
+-rw-r--r-- 1 root root  4316 May 15 11:37 xmpp-brute.nse
+-rw-r--r-- 1 root root 17285 May 15 11:37 xmpp-info.nse
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mls -l /usr/share/nmap/scripts | grep banner[27m[C[C[C[Cls -l /usr/share/nmap/scripts | grep banner
+[?2004l-rw-r--r-- 1 root root  6136 May 15 11:37 [01;31m[Kbanner[m[K.nse
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m ls -l /usr/share/nmap/scripts | grep banner[K[K[K[K[K[Khttp
+[?2004l-rw-r--r-- 1 root root  2153 May 15 11:37 [01;31m[Khttp[m[K-adobe-coldfusion-apsa1301.nse
+-rw-r--r-- 1 root root  5149 May 15 11:37 [01;31m[Khttp[m[K-affiliate-id.nse
+-rw-r--r-- 1 root root  1950 May 15 11:37 [01;31m[Khttp[m[K-apache-negotiation.nse
+-rw-r--r-- 1 root root  4499 May 15 11:37 [01;31m[Khttp[m[K-apache-server-status.nse
+-rw-r--r-- 1 root root  1805 May 15 11:37 [01;31m[Khttp[m[K-aspnet-debug.nse
+-rw-r--r-- 1 root root  3959 May 15 11:37 [01;31m[Khttp[m[K-auth-finder.nse
+-rw-r--r-- 1 root root  3187 May 15 11:37 [01;31m[Khttp[m[K-auth.nse
+-rw-r--r-- 1 root root  2865 May 15 11:37 [01;31m[Khttp[m[K-avaya-ipoffice-users.nse
+-rw-r--r-- 1 root root  4372 May 15 11:37 [01;31m[Khttp[m[K-awstatstotals-exec.nse
+-rw-r--r-- 1 root root  6872 May 15 11:37 [01;31m[Khttp[m[K-axis2-dir-traversal.nse
+-rw-r--r-- 1 root root  5484 May 15 11:37 [01;31m[Khttp[m[K-backup-finder.nse
+-rw-r--r-- 1 root root  6387 May 15 11:37 [01;31m[Khttp[m[K-barracuda-dir-traversal.nse
+-rw-r--r-- 1 root root  2038 May 15 11:37 [01;31m[Khttp[m[K-bigip-cookie.nse
+-rw-r--r-- 1 root root  4920 May 15 11:37 [01;31m[Khttp[m[K-brute.nse
+-rw-r--r-- 1 root root  4436 May 15 11:37 [01;31m[Khttp[m[K-cakephp-version.nse
+-rw-r--r-- 1 root root  4927 May 15 11:37 [01;31m[Khttp[m[K-chrono.nse
+-rw-r--r-- 1 root root  1695 May 15 11:37 [01;31m[Khttp[m[K-cisco-anyconnect.nse
+-rw-r--r-- 1 root root  5520 May 15 11:37 [01;31m[Khttp[m[K-coldfusion-subzero.nse
+-rw-r--r-- 1 root root  4150 May 15 11:37 [01;31m[Khttp[m[K-comments-displayer.nse
+-rw-r--r-- 1 root root  7251 May 15 11:37 [01;31m[Khttp[m[K-config-backup.nse
+-rw-r--r-- 1 root root  5139 May 15 11:37 [01;31m[Khttp[m[K-cookie-flags.nse
+-rw-r--r-- 1 root root  2577 May 15 11:37 [01;31m[Khttp[m[K-cors.nse
+-rw-r--r-- 1 root root 13803 May 15 11:37 [01;31m[Khttp[m[K-cross-domain-policy.nse
+-rw-r--r-- 1 root root  5418 May 15 11:37 [01;31m[Khttp[m[K-csrf.nse
+-rw-r--r-- 1 root root  1718 May 15 11:37 [01;31m[Khttp[m[K-date.nse
+-rw-r--r-- 1 root root 17388 May 15 11:37 [01;31m[Khttp[m[K-default-accounts.nse
+-rw-r--r-- 1 root root  4288 May 15 11:37 [01;31m[Khttp[m[K-devframework.nse
+-rw-r--r-- 1 root root  2529 May 15 11:37 [01;31m[Khttp[m[K-dlink-backdoor.nse
+-rw-r--r-- 1 root root  4452 May 15 11:37 [01;31m[Khttp[m[K-dombased-xss.nse
+-rw-r--r-- 1 root root 13893 May 15 11:37 [01;31m[Khttp[m[K-domino-enum-passwords.nse
+-rw-r--r-- 1 root root  6931 May 15 11:37 [01;31m[Khttp[m[K-drupal-enum.nse
+-rw-r--r-- 1 root root  2256 May 15 11:37 [01;31m[Khttp[m[K-drupal-enum-users.nse
+-rw-r--r-- 1 root root 20667 May 15 11:37 [01;31m[Khttp[m[K-enum.nse
+-rw-r--r-- 1 root root  3347 May 15 11:37 [01;31m[Khttp[m[K-errors.nse
+-rw-r--r-- 1 root root 20413 May 15 11:37 [01;31m[Khttp[m[K-exif-spider.nse
+-rw-r--r-- 1 root root  5199 May 15 11:37 [01;31m[Khttp[m[K-favicon.nse
+-rw-r--r-- 1 root root  4451 May 15 11:37 [01;31m[Khttp[m[K-feed.nse
+-rw-r--r-- 1 root root  9076 May 15 11:37 [01;31m[Khttp[m[K-fetch.nse
+-rw-r--r-- 1 root root 11327 May 15 11:37 [01;31m[Khttp[m[K-fileupload-exploiter.nse
+-rw-r--r-- 1 root root 21101 May 15 11:37 [01;31m[Khttp[m[K-form-brute.nse
+-rw-r--r-- 1 root root  7934 May 15 11:37 [01;31m[Khttp[m[K-form-fuzzer.nse
+-rw-r--r-- 1 root root  2739 May 15 11:37 [01;31m[Khttp[m[K-frontpage-login.nse
+-rw-r--r-- 1 root root  2164 May 15 11:37 [01;31m[Khttp[m[K-generator.nse
+-rw-r--r-- 1 root root 12100 May 15 11:37 [01;31m[Khttp[m[K-git.nse
+-rw-r--r-- 1 root root  3195 May 15 11:37 [01;31m[Khttp[m[K-gitweb-projects-enum.nse
+-rw-r--r-- 1 root root  3381 May 15 11:37 [01;31m[Khttp[m[K-google-malware.nse
+-rw-r--r-- 1 root root 11692 May 15 11:37 [01;31m[Khttp[m[K-grep.nse
+-rw-r--r-- 1 root root  1797 May 15 11:37 [01;31m[Khttp[m[K-headers.nse
+-rw-r--r-- 1 root root  3383 May 15 11:37 [01;31m[Khttp[m[K-hp-ilo-info.nse
+-rw-r--r-- 1 root root  6973 May 15 11:37 [01;31m[Khttp[m[K-huawei-hg5xx-vuln.nse
+-rw-r--r-- 1 root root  2801 May 15 11:37 [01;31m[Khttp[m[K-icloud-findmyiphone.nse
+-rw-r--r-- 1 root root  4085 May 15 11:37 [01;31m[Khttp[m[K-icloud-sendmsg.nse
+-rw-r--r-- 1 root root  6073 May 15 11:37 [01;31m[Khttp[m[K-iis-short-name-brute.nse
+-rw-r--r-- 1 root root  7921 May 15 11:37 [01;31m[Khttp[m[K-iis-webdav-vuln.nse
+-rw-r--r-- 1 root root  2540 May 15 11:37 [01;31m[Khttp[m[K-internal-ip-disclosure.nse
+-rw-r--r-- 1 root root  5422 May 15 11:37 [01;31m[Khttp[m[K-joomla-brute.nse
+-rw-r--r-- 1 root root  5479 May 15 11:37 [01;31m[Khttp[m[K-jsonp-detection.nse
+-rw-r--r-- 1 root root  2649 May 15 11:37 [01;31m[Khttp[m[K-litespeed-sourcecode-download.nse
+-rw-r--r-- 1 root root  6120 May 15 11:37 [01;31m[Khttp[m[K-ls.nse
+-rw-r--r-- 1 root root  3269 May 15 11:37 [01;31m[Khttp[m[K-majordomo2-dir-traversal.nse
+-rw-r--r-- 1 root root  2838 May 15 11:37 [01;31m[Khttp[m[K-malware-host.nse
+-rw-r--r-- 1 root root  3704 May 15 11:37 [01;31m[Khttp[m[K-mcmp.nse
+-rw-r--r-- 1 root root  7320 May 15 11:37 [01;31m[Khttp[m[K-methods.nse
+-rw-r--r-- 1 root root  6895 May 15 11:37 [01;31m[Khttp[m[K-method-tamper.nse
+-rw-r--r-- 1 root root  2726 May 15 11:37 [01;31m[Khttp[m[K-mobileversion-checker.nse
+-rw-r--r-- 1 root root  4461 May 15 11:37 [01;31m[Khttp[m[K-ntlm-info.nse
+-rw-r--r-- 1 root root  8269 May 15 11:37 [01;31m[Khttp[m[K-open-proxy.nse
+-rw-r--r-- 1 root root  4756 May 15 11:37 [01;31m[Khttp[m[K-open-redirect.nse
+-rw-r--r-- 1 root root  7023 May 15 11:37 [01;31m[Khttp[m[K-passwd.nse
+-rw-r--r-- 1 root root  6225 May 15 11:37 [01;31m[Khttp[m[K-phpmyadmin-dir-traversal.nse
+-rw-r--r-- 1 root root  5822 May 15 11:37 [01;31m[Khttp[m[K-phpself-xss.nse
+-rw-r--r-- 1 root root  7070 May 15 11:37 [01;31m[Khttp[m[K-php-version.nse
+-rw-r--r-- 1 root root  3487 May 15 11:37 [01;31m[Khttp[m[K-proxy-brute.nse
+-rw-r--r-- 1 root root  1930 May 15 11:37 [01;31m[Khttp[m[K-put.nse
+-rw-r--r-- 1 root root  3591 May 15 11:37 [01;31m[Khttp[m[K-qnap-nas-info.nse
+-rw-r--r-- 1 root root  2175 May 15 11:37 [01;31m[Khttp[m[K-referer-checker.nse
+-rw-r--r-- 1 root root  9599 May 15 11:37 [01;31m[Khttp[m[K-rfi-spider.nse
+-rw-r--r-- 1 root root  2737 May 15 11:37 [01;31m[Khttp[m[K-robots.txt.nse
+-rw-r--r-- 1 root root  2305 May 15 11:37 [01;31m[Khttp[m[K-robtex-reverse-ip.nse
+-rw-r--r-- 1 root root  2776 May 15 11:37 [01;31m[Khttp[m[K-robtex-shared-ns.nse
+-rw-r--r-- 1 root root  5034 May 15 11:37 [01;31m[Khttp[m[K-sap-netweaver-leak.nse
+-rw-r--r-- 1 root root 15956 May 15 11:37 [01;31m[Khttp[m[K-security-headers.nse
+-rw-r--r-- 1 root root  3283 May 15 11:37 [01;31m[Khttp[m[K-server-header.nse
+-rw-r--r-- 1 root root  5489 May 15 11:37 [01;31m[Khttp[m[K-shellshock.nse
+-rw-r--r-- 1 root root  5344 May 15 11:37 [01;31m[Khttp[m[K-sitemap-generator.nse
+-rw-r--r-- 1 root root  5464 May 15 11:37 [01;31m[Khttp[m[K-slowloris-check.nse
+-rw-r--r-- 1 root root 11167 May 15 11:37 [01;31m[Khttp[m[K-slowloris.nse
+-rw-r--r-- 1 root root  9404 May 15 11:37 [01;31m[Khttp[m[K-sql-injection.nse
+-rw-r--r-- 1 root root  2528 May 15 11:37 [01;31m[Khttp[m[Ks-redirect.nse
+-rw-r--r-- 1 root root  8451 May 15 11:37 [01;31m[Khttp[m[K-stored-xss.nse
+-rw-r--r-- 1 root root  4018 May 15 11:37 [01;31m[Khttp[m[K-svn-enum.nse
+-rw-r--r-- 1 root root  4360 May 15 11:37 [01;31m[Khttp[m[K-svn-info.nse
+-rw-r--r-- 1 root root  2317 May 15 11:37 [01;31m[Khttp[m[K-title.nse
+-rw-r--r-- 1 root root  6026 May 15 11:37 [01;31m[Khttp[m[K-tplink-dir-traversal.nse
+-rw-r--r-- 1 root root  1947 May 15 11:37 [01;31m[Khttp[m[K-trace.nse
+-rw-r--r-- 1 root root  5294 May 15 11:37 [01;31m[Khttp[m[K-traceroute.nse
+-rw-r--r-- 1 root root  6437 May 15 11:37 [01;31m[Khttp[m[K-trane-info.nse
+-rw-r--r-- 1 root root  5549 May 15 11:37 [01;31m[Khttp[m[K-unsafe-output-escaping.nse
+-rw-r--r-- 1 root root  5403 May 15 11:37 [01;31m[Khttp[m[K-useragent-tester.nse
+-rw-r--r-- 1 root root  4550 May 15 11:37 [01;31m[Khttp[m[K-userdir-enum.nse
+-rw-r--r-- 1 root root  5820 May 15 11:37 [01;31m[Khttp[m[K-vhosts.nse
+-rw-r--r-- 1 root root 10770 May 15 11:37 [01;31m[Khttp[m[K-virustotal.nse
+-rw-r--r-- 1 root root  2078 May 15 11:37 [01;31m[Khttp[m[K-vlcstreamer-ls.nse
+-rw-r--r-- 1 root root  4111 May 15 11:37 [01;31m[Khttp[m[K-vmware-path-vuln.nse
+-rw-r--r-- 1 root root  3273 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2006-3392.nse
+-rw-r--r-- 1 root root  6610 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2009-3960.nse
+-rw-r--r-- 1 root root  2957 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2010-0738.nse
+-rw-r--r-- 1 root root  5607 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2010-2861.nse
+-rw-r--r-- 1 root root  4527 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2011-3192.nse
+-rw-r--r-- 1 root root  5851 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2011-3368.nse
+-rw-r--r-- 1 root root  4403 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2012-1823.nse
+-rw-r--r-- 1 root root  4831 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2013-0156.nse
+-rw-r--r-- 1 root root  2853 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2013-6786.nse
+-rw-r--r-- 1 root root  5009 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2013-7091.nse
+-rw-r--r-- 1 root root  2945 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-2126.nse
+-rw-r--r-- 1 root root  3334 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-2127.nse
+-rw-r--r-- 1 root root  3193 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-2128.nse
+-rw-r--r-- 1 root root  2979 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-2129.nse
+-rw-r--r-- 1 root root 14018 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-3704.nse
+-rw-r--r-- 1 root root  4523 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2014-8877.nse
+-rw-r--r-- 1 root root  7774 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2015-1427.nse
+-rw-r--r-- 1 root root  3443 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2015-1635.nse
+-rw-r--r-- 1 root root  4372 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2017-1001000.nse
+-rw-r--r-- 1 root root  2594 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2017-5638.nse
+-rw-r--r-- 1 root root  5480 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2017-5689.nse
+-rw-r--r-- 1 root root  5187 May 15 11:37 [01;31m[Khttp[m[K-vuln-cve2017-8917.nse
+-rw-r--r-- 1 root root  2699 May 15 11:37 [01;31m[Khttp[m[K-vuln-misfortune-cookie.nse
+-rw-r--r-- 1 root root  4225 May 15 11:37 [01;31m[Khttp[m[K-vuln-wnr1000-creds.nse
+-rw-r--r-- 1 root root  5422 May 15 11:37 [01;31m[Khttp[m[K-waf-detect.nse
+-rw-r--r-- 1 root root 19339 May 15 11:37 [01;31m[Khttp[m[K-waf-fingerprint.nse
+-rw-r--r-- 1 root root  5806 May 15 11:37 [01;31m[Khttp[m[K-webdav-scan.nse
+-rw-r--r-- 1 root root  5061 May 15 11:37 [01;31m[Khttp[m[K-wordpress-brute.nse
+-rw-r--r-- 1 root root 10866 May 15 11:37 [01;31m[Khttp[m[K-wordpress-enum.nse
+-rw-r--r-- 1 root root  4641 May 15 11:37 [01;31m[Khttp[m[K-wordpress-users.nse
+-rw-r--r-- 1 root root  2653 May 15 11:37 [01;31m[Khttp[m[K-xssed.nse
+-rw-r--r-- 1 root root  2437 May 15 11:37 ip-[01;31m[Khttp[m[Ks-discover.nse
+-rw-r--r-- 1 root root  4900 May 15 11:37 membase-[01;31m[Khttp[m[K-info.nse
+-rw-r--r-- 1 root root  5564 May 15 11:37 riak-[01;31m[Khttp[m[K-info.nse
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mnmap -sV --script=banner.nse 172.16.10.0/24 --exclude 172.16.10.1[27m [A[C[C[C[Cnmap -sV --script=banner.nse 172.16.10.0/24 --exclude 172.16.10.1 [A
+[?2004lStarting Nmap 7.95 ( https://nmap.org ) at 2025-09-05 19:31 EDT
+Nmap scan report for 172.16.10.10
+Host is up (0.0000060s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+8081/tcp open  http    Werkzeug httpd 3.0.1 (Python 3.12.3)
+|_http-server-header: Werkzeug/3.0.1 Python/3.12.3
+MAC Address: 86:E2:05:AA:B1:6B (Unknown)
+
+Nmap scan report for 172.16.10.11
+Host is up (0.0000060s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.5
+|_banner: 220 (vsFTPd 3.0.5)
+80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
+|_http-server-header: Apache/2.4.58 (Ubuntu)
+MAC Address: 86:4D:48:74:4C:7E (Unknown)
+Service Info: OS: Unix
+
+Nmap scan report for 172.16.10.12
+Host is up (0.0000060s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.57 ((Debian))
+|_http-server-header: Apache/2.4.57 (Debian)
+MAC Address: C6:0F:AA:37:3C:25 (Unknown)
+
+Nmap scan report for 172.16.10.13
+Host is up (0.0000060s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.13 (Ubuntu Linux; protocol 2.0)
+|_banner: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.13
+MAC Address: F6:FA:C3:96:90:49 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 255 IP addresses (4 hosts up) scanned in 25.01 seconds
+
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mdirsearch -u http://172.16.10.10:8081/[27m[C[C[C[Cdirsearch -u http://172.16.10.10:8081/
+[?2004l/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import DistributionNotFound, VersionConflict
+[1m[35m
+  _|. _ _  _  _  _ _|_    v0.4.3
+ (_||| _) (/_(_|| (_| )
+[0m
+[1m[33mExtensions: [0m[1m[36mphp, aspx, jsp, html, js[0m[1m[35m | [0m[1m[33mHTTP method: [0m[1m[36mGET[0m
+[1m[33mThreads: [0m[1m[36m25[0m[1m[35m | [0m[1m[33mWordlist size: [0m[1m[36m11460[0m
+
+Output File: /home/kali/ci0143/lab1/reports/http_172.16.10.10_8081/__25-09-05_19-33-35.txt
+
+[1m[33mTarget: [0m[1m[36mhttp://172.16.10.10:8081/[0m
+[1m[33m
+[19:33:35] Starting: [0m
+
+
+[35m[19:33:57] 400 -  167B  - /console[0m
+[32m[19:34:26] 200 -  380B  - /upload[0m
+[35m[19:34:26] 404 -   24B  - /uploads/affwp-debug.log[0m
+[35m[19:34:26] 404 -   24B  - /uploads/dump.sql[0m
+[31m[19:34:26] 500 -   12KB - /uploads[0m
+[1m[33m
+Task Completed[0m
+[0m
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m 
+[?2004l
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m 
+[?2004l
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [7mdirsearch -u http://<host>:<puerto>/[27m[C[C[C[Cdirsearch -u http://<host>:<puerto>/[1P>/[1P>/[1P>/[1P>/[1P>/[1P>/[1P>/[1P/8/0/[1P:80/[1P:80/[1P:80/[1P:80/[1P:80/[1P:80/1:80/7:80/2:80/.:80/1:80/6:80/.:80/1:80/0:80/.:80/1:80/1:80/
+[?2004l/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import DistributionNotFound, VersionConflict
+[1m[35m
+  _|. _ _  _  _  _ _|_    v0.4.3
+ (_||| _) (/_(_|| (_| )
+[0m
+[1m[33mExtensions: [0m[1m[36mphp, aspx, jsp, html, js[0m[1m[35m | [0m[1m[33mHTTP method: [0m[1m[36mGET[0m
+[1m[33mThreads: [0m[1m[36m25[0m[1m[35m | [0m[1m[33mWordlist size: [0m[1m[36m11460[0m
+
+Output File: /home/kali/ci0143/lab1/reports/http_172.16.10.11_80/__25-09-05_19-46-19.txt
+
+[1m[33mTarget: [0m[1m[36mhttp://172.16.10.11/[0m
+[1m[33m
+[19:46:19] Starting: [0m
+[34m[19:46:21] 403 -  277B  - /.ht_wsr.txt[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess.bak1[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess.orig[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess.save[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess.sample[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess_orig[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess_sc[0m
+[34m[19:46:21] 403 -  277B  - /.htaccess_extra[0m
+[34m[19:46:21] 403 -  277B  - /.htaccessBAK[0m
+[34m[19:46:21] 403 -  277B  - /.htaccessOLD2[0m
+[34m[19:46:21] 403 -  277B  - /.htaccessOLD[0m
+[34m[19:46:21] 403 -  277B  - /.htpasswd_test[0m
+[34m[19:46:21] 403 -  277B  - /.html[0m
+[34m[19:46:21] 403 -  277B  - /.htpasswds[0m
+[34m[19:46:21] 403 -  277B  - /.httr-oauth[0m
+[34m[19:46:21] 403 -  277B  - /.htm[0m
+[36m[19:46:31] 301 -  313B  - /backup[0m  ->  http://172.16.10.11/backup/
+[32m[19:46:31] 200 -  481B  - /backup/[0m
+[34m[19:46:49] 403 -  277B  - /server-status/[0m
+[34m[19:46:49] 403 -  277B  - /server-status[0m
+[1m[33m
+Task Completed[0m
+[0m
+[?2004h]0;kali@kali: ~/ci0143/lab1[;32m┌──([1;34mkali㉿kali[;32m)-[[0;1m~/ci0143/lab1[;32m]
+[;32m└─[1;34m$[0m [K[;32m└─[1;34m$[0m exit
+[?2004lexit
+
+Script done on 2025-09-05 19:57:30-04:00 [COMMAND_EXIT_CODE="0"]
