@@ -12,3 +12,4 @@ Understanding NTLM Authentication and NTLM Relay Attacks. (2025, 19 septiembre).
 
 Shivanandhan, M. (2020, 2 octubre). *What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time.* freeCodeCamp.org. https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/
 
+Training platform of World Wide Technology which provide the laboratory for my path Blue Team - Cybersecurity
