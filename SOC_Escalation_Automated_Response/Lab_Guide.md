@@ -1,3 +1,14 @@
+# Lab Index - Author Ximena Marín 
+
+1. [Introduction](#introduction)
+2. [Step 1 – Initial Configuration](#step-1-initial-configuration)
+3. [Step 2 – Capture the Credentials](#step-2-capture-the-credentials)
+4. [Step 3 – Execute the Attack](#step-3-execute-the-attack)
+5. [Step 4 – SOC Triage & Alert Escalation Using Falcon XDR](#step-4-soc-triage--alert-escalation-using-falcon-xdr)
+6. [Step 5 – Network Forensics: Validate Attack Chain with Zeek & Suricata](#step-5-network-forensics-validate-attack-chain-with-zeek--suricata)
+7. [Step 6 – Automate the Response with Fusion SOAR](#step-6-automate-the-response-with-fusion-soar)
+
+
 ## Introduction
 
 The virtual machine (VM) used in this lab was provided by World Wide Technology’s digital training platform. It came preconfigured with essential tools and sensors for SOC operations, including Falcon Sensor, Sysmon, Security Onion, and various forensic utilities.
@@ -397,7 +408,7 @@ source.ip:"192.168.1.2" AND destination.ip:"192.168.3.2" AND network.transport:"
 process.command_line:*schtasks*
 ```
 
-## Step 6 – Automate the Response with Fusion SOAR
+## Step 6 Automate the Response with Fusion SOAR
 **Objective:** Execute manually a Fusion SOAR workflow to simulate automated containment actions in response to a credential theft scenario. Reinforcing key SOC analyst skills in incident response, workflow orchestration, and alert validation.
 
 **Tools used:**
